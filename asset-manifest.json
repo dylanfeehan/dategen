@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/dategen/static/css/main.8caea105.css",
+    "main.js": "/dategen/static/js/main.1a9b90dd.js",
+    "static/js/787.8db6220c.chunk.js": "/dategen/static/js/787.8db6220c.chunk.js",
+    "static/media/dateGen.svg": "/dategen/static/media/dateGen.d10eb4e8c121ec5e706add4ae98620f4.svg",
+    "index.html": "/dategen/index.html",
+    "main.8caea105.css.map": "/dategen/static/css/main.8caea105.css.map",
+    "main.1a9b90dd.js.map": "/dategen/static/js/main.1a9b90dd.js.map",
+    "787.8db6220c.chunk.js.map": "/dategen/static/js/787.8db6220c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8caea105.css",
+    "static/js/main.1a9b90dd.js"
+  ]
+}
