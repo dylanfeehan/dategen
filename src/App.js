@@ -15,14 +15,16 @@ import logo from './dateGen.svg';
 function App() {
   return (
 
-    <Router>
+    <Router> 
+    {// HashRouter 
+    }
     <Navbar />
     <Routes>
-      <Route exact path='/' element={<Home />} />
-      <Route path='/about' element={<About/>} />
-      <Route path='/contact' element={<Contact/>} /> 
-      <Route path='/blogs' element={<Blogs/>} />
-      <Route path='/sign-up' element={<SignUp/>} />
+      <Route exact path='/dategen' element={<Home />} />
+      <Route path='/dategen#about' element={<About/>} />
+      <Route path='/dategen#contact' element={<Contact/>} /> 
+      <Route path='/dategen#blogs' element={<Blogs/>} />
+      <Route path='/dategen#sign-up' element={<SignUp/>} />
     </Routes>
     </Router>
   );
