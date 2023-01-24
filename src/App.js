@@ -1,3 +1,4 @@
+// todo: look into navbar ... how it works... so you can convert to bootstrap
 import React from 'react';
 import './App.css';
 
