@@ -1,3 +1,4 @@
+// just use, like richie, the fucking uhh navbar uhhh navbar bootstrap yeah that.
 import React from 'react';
 import HomeLogo from '../../homelogo';
 import {Link} from 'react-router-dom';
