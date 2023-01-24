@@ -17,6 +17,11 @@
   display: grid;
   align-items: center;
   justify-content: center;
+  text-align: center;
+}
+.primary-button {
+  padding: 1rem;
+  margin: 1rem;
 }
 
 .Website-Logo {

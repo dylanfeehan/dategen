@@ -10,15 +10,15 @@ const Home = () => {
     // this is basically the home page so.... lets add some shit
     <div>
       <div className="container">
-        <h2 className="centered message">Welcome! page under construction</h2>
+        <h2 className="centered message">Welcome! Please choose which part of the date you wish to plan:</h2>
         <Link to='/dates/activities'>
-          <Button class="centered-button">Activities</Button>
+          <Button className="primary-button">Activities</Button>
         </Link>
         <Link to='/dates/fooddrink'>
-          <Button class="centered-button">Food/Drink</Button>
+          <Button className="primary-button">Food/Drink</Button>
         </Link>
         <Link to='/dates/oneonone'>
-          <Button class="centered-button">One-On-One</Button>
+          <Button className="primary-button">One-On-One</Button>
         </Link>
       </div>
     </div>
