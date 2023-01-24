@@ -3,7 +3,7 @@ import './App.css';
 
 // navbar shit
 import Navbar from './components/Navbar/index.js';
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { HashRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages';
 import About from './pages/about'
 import Blogs from './pages/blogs'
@@ -16,15 +16,13 @@ function App() {
   return (
 
     <Router> 
-    {// HashRouter 
-    }
     <Navbar />
     <Routes>
-      <Route exact path='/dategen' element={<Home />} />
-      <Route path='/dategen#about' element={<About/>} />
-      <Route path='/dategen#contact' element={<Contact/>} /> 
-      <Route path='/dategen#blogs' element={<Blogs/>} />
-      <Route path='/dategen#sign-up' element={<SignUp/>} />
+      <Route exact path='/' element={<Home />} />
+      <Route path='/about' element={<About/>} />
+      <Route path='/contact' element={<Contact/>} /> 
+      <Route path='/blogs' element={<Blogs/>} />
+      <Route path='/sign-up' element={<SignUp/>} />
     </Routes>
     </Router>
   );

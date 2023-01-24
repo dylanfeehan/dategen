@@ -4,7 +4,7 @@ const About = () => {
   return (
     <div>
       <h1 className="message">
-        Hi Jen :) i made this for you because you judged my planning abilities. Now what do you have to say for yourself?
+        Hi Jen :) i made dateGen (like Date Jen lol) for you so you can plan our date with a web app!
         <br></br>
         <br></br>
         This helped me learn a lot of stuff including CSS bootstrap, javascript, react, and react-router. so thanks, it was fun. 

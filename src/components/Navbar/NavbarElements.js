@@ -10,6 +10,7 @@ export const Nav = styled.nav`
   margin: auto;
 `;
 
+// navlink is just a styled link
 export const NavLink = styled(Link)`
 color: #ffffff;
 display: flex;
