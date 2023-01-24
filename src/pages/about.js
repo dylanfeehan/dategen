@@ -10,7 +10,7 @@ const About = () => {
         This helped me learn a lot of stuff including CSS bootstrap, javascript, react, and react-router. so thanks, it was fun. 
         <br></br>
         <br></br>
-        The <code>source code</code> can be found by clicking <a href="" this link>this link.</a>
+        The <code>source code</code> can be found by clicking <a href="https://github.com/dylanfeehan/dategen" this link>this link.</a>
         <br></br>
         <br></br>
         I hope we have fun :)
