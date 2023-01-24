@@ -1,20 +1,19 @@
 import React from 'react';
-import HomeLogo from '../../homelogo'
+import HomeLogo from '../../homelogo';
+import {Link} from 'react-router-dom';
 import { Nav, NavLink, NavMenu } from "./NavbarElements";
 
 const Navbar = () => {
   return (
     <>
-      <Nav>
-        <NavMenu>
-          {/*<NavLink to="/" >Home</NavLink>*/}
-          <HomeLogo/>
-          <NavLink to="/about" >About</NavLink>
-          <NavLink to="/contact" >Contact Me</NavLink>
-          <NavLink to="/blogs" >Blogs</NavLink>
-          <NavLink to="/sign-up" >Sign Up</NavLink>
-        </NavMenu>
-      </Nav>
+      <div>
+        {/*<NavLink to="/" >Home</NavLink>*/}
+        <HomeLogo/>
+        <Link to="/about" >About</Link>
+        <Link to="/contact" >Contact Me</Link>
+        <Link to="/blogs" >Blogs</Link>
+        <Link to="/sign-up" >Sign Up</Link>
+      </div>
     </>
   );
 };
