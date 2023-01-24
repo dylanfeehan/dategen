@@ -9,6 +9,9 @@ import About from './pages/about'
 import Blogs from './pages/blogs'
 import SignUp from './pages/signup'
 import Contact from './pages/contact'
+import Activities from './pages/dates/activities'
+import FoodDrink from './pages/dates/fooddrink'
+import OneOnOne from './pages/dates/oneonone';
 
 import logo from './dateGen.svg';
 
@@ -23,6 +26,9 @@ function App() {
       <Route path='/contact' element={<Contact/>} /> 
       <Route path='/blogs' element={<Blogs/>} />
       <Route path='/sign-up' element={<SignUp/>} />
+      <Route path='/dates/oneonone' element={<OneOnOne/>} />
+      <Route path='/dates/activities' element={<Activities/>} />
+      <Route path='/dates/fooddrink' element={<FoodDrink/>} />
     </Routes>
     </Router>
   );

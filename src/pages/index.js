@@ -1,6 +1,7 @@
 import react from 'react';
 import '../../src/App.css'
-import logo from '../../src/dateGen.svg';
+//import logo from '../../src/dateGen.svg';
+import HomeLogo from '../../src/homelogo'
 import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 
@@ -9,13 +10,17 @@ const Home = () => {
     // this is basically the home page so.... lets add some shit
     <div>
       <div className="container">
-        <img src={logo} className="Website-Logo" alt="dateGen logo" /> {/* how to define this as an onblock logo? */}
+        <HomeLogo/>
         <h2 className="centered message">Welcome! page under construction</h2>
-        <Link to='/about'>
-          <Button variant="dark">Activities</Button>
+        <Link to='/dates/activities'>
+          <Button class="centered-button">Activities</Button>
         </Link>
-        <Button>Food/Drink</Button>
-        <Button>One-On-One</Button>
+        <Link to='/dates/fooddrink'>
+          <Button class="centered-button">Food/Drink</Button>
+        </Link>
+        <Link to='/dates/oneonone'>
+          <Button class="centered-button">One-On-One</Button>
+        </Link>
       </div>
     </div>
   );
