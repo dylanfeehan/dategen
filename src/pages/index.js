@@ -10,7 +10,6 @@ const Home = () => {
     // this is basically the home page so.... lets add some shit
     <div>
       <div className="container">
-        <HomeLogo/>
         <h2 className="centered message">Welcome! page under construction</h2>
         <Link to='/dates/activities'>
           <Button class="centered-button">Activities</Button>
