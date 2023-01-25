@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.ec3ca772.css",
-    "main.js": "/static/js/main.db612437.js",
-    "static/js/787.8db6220c.chunk.js": "/static/js/787.8db6220c.chunk.js",
-    "static/media/dateGen.svg": "/static/media/dateGen.dbab606cc1fd19a5074ab3bddd30600a.svg",
-    "index.html": "/index.html",
-    "main.ec3ca772.css.map": "/static/css/main.ec3ca772.css.map",
-    "main.db612437.js.map": "/static/js/main.db612437.js.map",
-    "787.8db6220c.chunk.js.map": "/static/js/787.8db6220c.chunk.js.map"
+    "main.css": "/dategen/static/css/main.ec3ca772.css",
+    "main.js": "/dategen/static/js/main.014e85cd.js",
+    "static/js/787.8db6220c.chunk.js": "/dategen/static/js/787.8db6220c.chunk.js",
+    "static/media/dateGen.svg": "/dategen/static/media/dateGen.dbab606cc1fd19a5074ab3bddd30600a.svg",
+    "index.html": "/dategen/index.html",
+    "main.ec3ca772.css.map": "/dategen/static/css/main.ec3ca772.css.map",
+    "main.014e85cd.js.map": "/dategen/static/js/main.014e85cd.js.map",
+    "787.8db6220c.chunk.js.map": "/dategen/static/js/787.8db6220c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ec3ca772.css",
-    "static/js/main.db612437.js"
+    "static/js/main.014e85cd.js"
   ]
 }
