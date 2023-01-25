@@ -4,6 +4,7 @@ import '../../src/App.css'
 import HomeLogo from '../../src/homelogo'
 import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Home = () => {
   return (

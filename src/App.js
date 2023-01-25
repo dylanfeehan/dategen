@@ -3,7 +3,7 @@ import React from 'react';
 import './App.css';
 
 // navbar shit
-import Navbar from './components/Navbar/index.js';
+import MyNavbar from './components/Navbar/index.js';
 import { HashRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages';
 import About from './pages/about'
@@ -20,7 +20,7 @@ function App() {
   return (
 
     <Router> 
-    <Navbar />
+    <MyNavbar />
     <Routes>
       <Route exact path='/' element={<Home />} />
       <Route path='/about' element={<About/>} />

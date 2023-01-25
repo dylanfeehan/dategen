@@ -1,22 +1,31 @@
-// just use, like richie, the fucking uhh navbar uhhh navbar bootstrap yeah that.
 import React from 'react';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 import HomeLogo from '../../homelogo';
 import {Link} from 'react-router-dom';
-import { Nav, NavLink, NavMenu } from "./NavbarElements";
+import { Container } from 'react-bootstrap';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import '../../App.css'
 
-const Navbar = () => {
+const MyNavbar = () => {
   return (
-    <>
-      <div>
-        {/*<NavLink to="/" >Home</NavLink>*/}
-        <HomeLogo/>
-        <Link to="/about" >About</Link>
-        <Link to="/contact" >Contact Me</Link>
-        <Link to="/blogs" >Blogs</Link>
-        <Link to="/sign-up" >Sign Up</Link>
-      </div>
-    </>
+      <Navbar bg="primary" variant="dark" className="">
+        <Container>
+          <Nav className="d-flex justify-content-center align-items-center justify-content-center">
+            <Navbar.Brand>
+              <HomeLogo />
+            </Navbar.Brand>
+            <Nav.Link as={Link} to="/about" className="nav-link">About</Nav.Link>
+            <Nav.Link as={Link} to="/contact" className="nav-link">Contact</Nav.Link>
+            <Nav.Link as={Link} to="/blogs" className="nav-link">Blog</Nav.Link>
+
+            <NavDropdown title="Other" id="basic-nav-dropdown">
+              <NavDropdown.Item as={Link} to="/sign-up">Sign Up</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+          </Container>
+      </Navbar>
   );
 };
 
-export default Navbar; // replace this wiith ya own propreitary stuff my boi
+export default MyNavbar; // replace this wiith ya own propreitary stuff my boi

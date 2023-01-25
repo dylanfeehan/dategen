@@ -13,6 +13,15 @@
   color: white;
 }
 
+.nav-link {
+
+}
+/*.navigation-bar {
+  background-color: black;
+  color: black;
+}
+*/
+
 .container {
   display: grid;
   align-items: center;
