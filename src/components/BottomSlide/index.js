@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const BottomSlide = () => {
   return (
-    <Carousel variant="dark" className="styled-carousel fixed-bottom">
+    <Carousel variant="dark" className="styled-carousel fixed-bottom" style={{height: '5rem'}}>
         <Carousel.Item interval={1000}>
 					<img src={dinner} className="d-block w-100"/>
         </Carousel.Item>
