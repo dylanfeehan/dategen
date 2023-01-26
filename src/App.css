@@ -16,11 +16,24 @@
 .nav-link {
   color: white !important;
 }
-/*.navigation-bar {
-  background-color: black;
-  color: black;
+
+.homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
 }
-*/
+.styled-slide {
+  align-self: flex-end;
+}
+.styled-carousel {
+  display: grid !important;
+  height: 10rem;
+}
+
+.carousel-caption {
+  top: 0;
+}
 
 .container {
   display: grid;

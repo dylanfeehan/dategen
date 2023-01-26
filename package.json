@@ -1,6 +1,7 @@
+
 {
   "name": "dategen",
-  "homepage": "https://dylanfeehan.github.io/dategen",
+  "homepage": "https://dategen.fun",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -13,12 +13,14 @@ import Contact from './pages/contact'
 import Activities from './pages/dates/activities'
 import FoodDrink from './pages/dates/fooddrink'
 import OneOnOne from './pages/dates/oneonone';
-
 import logo from './dateGen.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import BottomSlides from './components/BottomSlide/index.js';
 
 function App() {
   return (
 
+  <div className="homepage">
     <Router> 
     <MyNavbar />
     <Routes>
@@ -32,6 +34,8 @@ function App() {
       <Route path='/dates/fooddrink' element={<FoodDrink/>} />
     </Routes>
     </Router>
+    <BottomSlides className="styled-slide" />
+  </div>
   );
 };
 
