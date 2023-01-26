@@ -1,8 +1,37 @@
 import React from 'react'
+import 'bootstrap/dist/css/bootstrap.css';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import dinner from '../../components/images/dinner.png'
 
 const FoodDrink = () => {
 	return (
-		<h1>You have successfully found the food and drink page!</h1>
+		<div>
+		<Card style={{width: '18rem'}} className="mx-auto">
+			<Card.Img variant="top" src={dinner} />
+			<Card.Body>
+				<Card.Title>Dinner</Card.Title>
+				<Card.Text>Grab a bite to eat at a nice Pittsburgh restaurant</Card.Text>
+			</Card.Body>
+			<Button>View Restaurants</Button>
+		</Card>
+		<Card style={{width: '18rem'}} className="mx-auto">
+			<Card.Img variant="top" src={dinner} />
+			<Card.Body>
+				<Card.Title>Dinner</Card.Title>
+				<Card.Text>Grab a bite to eat at a nice Pittsburgh restaurant</Card.Text>
+			</Card.Body>
+			<Button>View Restaurants</Button>
+		</Card>
+		<Card style={{width: '18rem'}} className="mx-auto">
+			<Card.Img variant="top" src={dinner} />
+			<Card.Body>
+				<Card.Title>Dinner</Card.Title>
+				<Card.Text>Grab a bite to eat at a nice Pittsburgh restaurant</Card.Text>
+			</Card.Body>
+			<Button>View Restaurants</Button>
+		</Card>
+		</div>
 	);
 };
 
