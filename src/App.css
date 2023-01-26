@@ -21,8 +21,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
+  padding-bottom: 12rem;
 }
+
+
+.datecard {
+  margin-top: 10px;
+}
+
+.my-navbar {
+}
+
 .styled-slide {
   align-self: flex-end;
 }

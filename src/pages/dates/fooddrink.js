@@ -3,11 +3,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import dinner from '../../components/images/dinner.png'
+import '../../App.css';
 
 const FoodDrink = () => {
 	return (
 		<div>
-		<Card style={{width: '18rem'}} className="mx-auto">
+		<Card style={{width: '18rem'}} className="mx-auto datecard">
 			<Card.Img variant="top" src={dinner} />
 			<Card.Body>
 				<Card.Title>Dinner</Card.Title>
@@ -15,7 +16,7 @@ const FoodDrink = () => {
 			</Card.Body>
 			<Button>View Restaurants</Button>
 		</Card>
-		<Card style={{width: '18rem'}} className="mx-auto">
+		<Card style={{width: '18rem'}} className="mx-auto datecard">
 			<Card.Img variant="top" src={dinner} />
 			<Card.Body>
 				<Card.Title>Dinner</Card.Title>
@@ -23,7 +24,7 @@ const FoodDrink = () => {
 			</Card.Body>
 			<Button>View Restaurants</Button>
 		</Card>
-		<Card style={{width: '18rem'}} className="mx-auto">
+		<Card style={{width: '18rem'}} className="mx-auto datecard">
 			<Card.Img variant="top" src={dinner} />
 			<Card.Body>
 				<Card.Title>Dinner</Card.Title>

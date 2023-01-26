@@ -22,7 +22,7 @@ function App() {
 
   <div className="homepage">
     <Router> 
-    <MyNavbar />
+    <MyNavbar className="my-navbar"/>
     <Routes>
       <Route exact path='/' element={<Home />} />
       <Route path='/about' element={<About/>} />
