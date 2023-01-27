@@ -16,6 +16,7 @@ import OneOnOne from './pages/dates/oneonone';
 import logo from './dateGen.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BottomSlides from './components/BottomSlide/index.js';
+import {foodDrinkData} from "./assets/foodDrinkData";
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
       <Route path='/sign-up' element={<SignUp/>} />
       <Route path='/dates/oneonone' element={<OneOnOne/>} />
       <Route path='/dates/activities' element={<Activities/>} />
-      <Route path='/dates/fooddrink' element={<FoodDrink/>} />
+      <Route path='/dates/fooddrink' element={<FoodDrink data={foodDrinkData}/>} />
     </Routes>
     </Router>
     <BottomSlides className="styled-slide" />
