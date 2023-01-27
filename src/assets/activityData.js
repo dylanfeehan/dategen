@@ -4,15 +4,15 @@ export const activityData = [
   {
     title: "Rollerskating",
     text: "Fantastic italian food in a beautiful tucked away basement restaurant in Shadyside.",
-    image: require('./images/girasole.jpg'),
+    image: require('./images/rollerskating.jpg'),
     site: "http://girasolepgh.com/",
     reservations: "Not required, but recommended. A follow up would be Cappy's Cafe",
     notes: "Park on potter street and walk."
   },
   {
-    title: "Rock Climbing",
+    title: "Bouldering",
     text: "Amazing cocktails in a ... \"blink and you'll miss it\" speakeasy. Known for their prohibition style aesthetic and drinks, this bar will not dissapoint.",
-    image: require('./images/acacia.jpg'),
+    image: require('./images/bouldering.jpg'),
     site: "http://acaciacocktails.com/",
     reservations: "No",
     notes: "Park at the gym by the clock tower and walk to Acacia."
@@ -28,8 +28,8 @@ export const activityData = [
   {
     title: "Pottery Class",
     text: "dine on the finest sushi in all of pittsburgh",
-    image: require('./images/gijin.jpg'),
-    site: "link here",
+    image: require('./images/pottery.jpg'),
+    site: "https://www.fireborn.com/",
     reservations: "false;",
     notes: "park on potter and walk"
   },

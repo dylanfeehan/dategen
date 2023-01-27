@@ -18,7 +18,7 @@ export const foodDrinkData = [
     notes: "Park at the gym by the clock tower and walk to Acacia."
   },
   {
-    title: "treat",
+    title: "Treat",
     text: "enjoy a fantastic dinner in shadyside's premier italian restaurant",
     image: require('./images/treat.jpg'),
     site: "link here",
@@ -26,7 +26,7 @@ export const foodDrinkData = [
     notes: "park on potter and walk"
   },
   {
-    title: "gi jin",
+    title: "Gi Jin",
     text: "dine on the finest sushi in all of pittsburgh",
     image: require('./images/gijin.jpg'),
     site: "link here",
@@ -34,7 +34,7 @@ export const foodDrinkData = [
     notes: "park on potter and walk"
   },
   {
-    title: "allindia",
+    title: "All India",
     text: "too much money in your wallet? enjoy a view of the city while blowing all of your money on average food",
     image: require('./images/allindia.jpg'),
     site: "link here",
@@ -42,7 +42,7 @@ export const foodDrinkData = [
     notes: "park on potter and walk"
   },
   {
-    title: "noodlehead",
+    title: "Noodlehead",
     text: "enjoy a fantastic dinner in shadyside's premier italian restaurant",
     image: require('./images/noodlehead.jpg'),
     site: "link here",
