@@ -12,12 +12,15 @@ import SignUp from './pages/signup'
 import Contact from './pages/contact'
 import Activities from './pages/dates/activities'
 import FoodDrink from './pages/dates/fooddrink'
+import GenericDateCard from './pages/dates/genericdatecard';
 import OneOnOne from './pages/dates/oneonone';
 import DateSpecs from './pages/dates/datespecs';
 import logo from './dateGen.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BottomSlides from './components/BottomSlide/index.js';
 import {foodDrinkData} from "./assets/foodDrinkData";
+import {activityData} from "./assets/activityData";
+import {oneOnOneData} from "./assets/oneOnOneData";
 
 function App() {
   return (
@@ -31,9 +34,9 @@ function App() {
       <Route path='/contact' element={<Contact/>} /> 
       <Route path='/blogs' element={<Blogs/>} />
       <Route path='/sign-up' element={<SignUp/>} />
-      <Route path='/dates/oneonone' element={<OneOnOne/>} />
-      <Route path='/dates/activities' element={<Activities/>} />
-      <Route path='/dates/fooddrink' element={<FoodDrink data={foodDrinkData}/>} />
+      <Route path='/dates/oneonone' element={<GenericDateCard data={oneOnOneData}/>} />
+      <Route path='/dates/activities' element={<GenericDateCard data={activityData}/>} />
+      <Route path='/dates/fooddrink' element={<GenericDateCard data={foodDrinkData}/>} />
       <Route path='/dates/datespecs' element={<DateSpecs /> } />
     </Routes>
     </Router>

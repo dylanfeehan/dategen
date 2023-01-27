@@ -32,7 +32,7 @@ const DateSpecs = () => {
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="2">
-        <Accordion.Header>Reservations</Accordion.Header>
+        <Accordion.Header>Reservations / Preparation</Accordion.Header>
         <Accordion.Body>
           {data.reservations}
         </Accordion.Body>
