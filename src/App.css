@@ -17,6 +17,17 @@
   color: white !important;
 }
 
+.my-icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+.contact-container {
+  display: flex;
+  flex-direction: horizontal;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+}
+
 .name-and-link {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -22,7 +22,7 @@ export const activityData = [
   {
     title: "Bowling",
     text: "You don't have to be good at bowling to enjoy bowling - Jen",
-    image: require('./images/treat.jpg'),
+    image: require('./images/bowling.jpg'),
     site: "https://arsenalbowl.com/",
     reservations: "Nope",
     notes: "Watch the nails.... again",
@@ -40,7 +40,7 @@ export const activityData = [
   {
     title: "Ice Skating",
     text: "Show of your impressive ice skating skills while your date flails about the rink like bamby on ice.",
-    image: require('./images/allindia.jpg'),
+    image: require('./images/iceskating.jpg'),
     site: "http://www.ppgplace.com/directory/the-rink/",
     reservatio: "Nope",
     notes: "Parking garage.",

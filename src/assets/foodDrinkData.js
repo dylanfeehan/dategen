@@ -58,7 +58,7 @@ export const foodDrinkData = [
   {
     title: "Apres Ski Bar",
     text: "Explore this beautiful ski-themed bar, a fancy and expensive addition to downtown Pittsburgh's \"Butcher and the Rye\"",
-    image: require('./images/noodlehead.jpg'),
+    image: require('./images/apresskibar.jpg'),
     site: "https://apresskibar.butcherandtherye.com/",
     reservations: "Possibly, contact Alyssa for assistance.",
     notes: "park on potter and walk",

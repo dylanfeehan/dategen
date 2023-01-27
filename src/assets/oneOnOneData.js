@@ -4,7 +4,7 @@ export const oneOnOneData = [
   {
     title: "Watch a Movie",
     text: "Fantastic italian food in a beautiful tucked away basement restaurant in Shadyside.",
-    image: require('./images/girasole.jpg'),
+    image: require('./images/movie.jpg'),
     site: "",
     reservations: "No, unless going to movie theater. Then about 2 hours of advance is necessary.",
     notes: "Optimal cuddle situation :0",
@@ -13,7 +13,7 @@ export const oneOnOneData = [
   {
     title: "Bake Together",
     text: "Enjoy a night in of baking and enjoy the fruits of your labor.",
-    image: require('./images/acacia.jpg'),
+    image: require('./images/baking.jpg'),
     site: "",
     reservations: "Yes, must shop for ingredients and necessary tools.",
     notes: "Baked goods -> kisses. Accentuate with wine.",
@@ -22,7 +22,7 @@ export const oneOnOneData = [
   {
     title: "Play a Drinking Game",
     text: "Loosen up with some fun one-on-one drinking games!",
-    image: require('./images/treat.jpg'),
+    image: require('./images/drinkinggame.png'),
     site: "",
     reservations: "Yes, must get drinks from a liquor store (some people don't like beer)",
     notes: "Truth or dare is always more fun with drinks...",
@@ -31,7 +31,7 @@ export const oneOnOneData = [
   {
     title: "Play a Board Game",
     text: "Catan? It's really all I have :(",
-    image: require('./images/gijin.jpg'),
+    image: require('./images/boardgame.jpg'),
     site: "",
     reservations: "No",
     notes: "Don't be a sore loser.. winner gets a kiss",
@@ -40,7 +40,7 @@ export const oneOnOneData = [
   {
     title: "Paint Together",
     text: "Too much money in your wallet? enjoy a view of the city while blowing all of your money on average food",
-    image: require('./images/allindia.jpg'),
+    image: require('./images/painttogether.jpg'),
     site: "",
     reservations: "Yes, painting supplies necessary.",
     notes: "Accentuate with wine.",
@@ -48,8 +48,8 @@ export const oneOnOneData = [
   },
   {
     title: "Cook Together",
-    text: "Enjoy a fantastic dinner in shadyside's premier italian restaurant",
-    image: require('./images/noodlehead.jpg'),
+    text: "Who doesn'twww like tasty nutritious meals?",
+    image: require('./images/cooktogether.jpg'),
     site: "",
     reservations: "Yes, must shop for ingredients and necessary tools.",
     notes: "Accentuate with wine.",
