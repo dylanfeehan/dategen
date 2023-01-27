@@ -5,8 +5,10 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import dinner from '../../components/images/dinner.png'
 import '../../App.css';
+import {foodDrinkData} from "./foodDrinkData.js"
 
 const FoodDrink = () => {
+console.log(foodDrinkData);
 	return (
 		<div>
 		<Card style={{width: '18rem'}} className="mx-auto datecard">
