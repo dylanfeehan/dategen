@@ -2,33 +2,51 @@ import React from 'react';
 
 export const foodDrinkData = [
   {
-    title: "girasole",
-    text: "enjoy a fantastic dinner in shadyside's premier italian restaurant",
-    image: require('./images/girasole.jpg')
+    title: "Girasole",
+    text: "Fantastic italian food in a beautiful tucked away basement restaurant in Shadyside.",
+    image: require('./images/girasole.jpg'),
+    site: "http://girasolepgh.com/",
+    reservations: "Not required, but recommended. A follow up would be Cappy's Cafe",
+    notes: "Park on potter street and walk."
   },
   {
-    title: "acacia",
-    text: "enjoy a fantastic dinner in shadyside's premier italian restaurant",
-    image: require('./images/acacia.jpg')
+    title: "Acacia",
+    text: "Amazing cocktails in a ... \"blink and you'll miss it\" speakeasy. Known for their prohibition style aesthetic and drinks, this bar will not dissapoint.",
+    image: require('./images/acacia.jpg'),
+    site: "http://acaciacocktails.com/",
+    reservations: "No",
+    notes: "Park at the gym by the clock tower and walk to Acacia."
   },
   {
     title: "treat",
     text: "enjoy a fantastic dinner in shadyside's premier italian restaurant",
-    image: require('./images/treat.jpg')
+    image: require('./images/treat.jpg'),
+    site: "link here",
+    reservations: "false;",
+    notes: "park on potter and walk"
   },
   {
     title: "gi jin",
     text: "dine on the finest sushi in all of pittsburgh",
-    image: require('./images/gijin.jpg')
+    image: require('./images/gijin.jpg'),
+    site: "link here",
+    reservations: "false;",
+    notes: "park on potter and walk"
   },
   {
     title: "allindia",
     text: "too much money in your wallet? enjoy a view of the city while blowing all of your money on average food",
-    image: require('./images/allindia.jpg')
+    image: require('./images/allindia.jpg'),
+    site: "link here",
+    reservations: "false;",
+    notes: "park on potter and walk"
   },
   {
     title: "noodlehead",
     text: "enjoy a fantastic dinner in shadyside's premier italian restaurant",
-    image: require('./images/noodlehead.jpg')
+    image: require('./images/noodlehead.jpg'),
+    site: "link here",
+    reservations: "false;",
+    notes: "park on potter and walk"
   }
 ]

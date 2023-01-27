@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import dinner from '../../components/images/dinner.png'
 import '../../App.css';
 import picture from '../../assets/images/test_photo.jpg';
+import {Link} from 'react-router-dom';
 
 
 class FoodDrink extends React.Component {
@@ -19,7 +20,9 @@ class FoodDrink extends React.Component {
 						<Card.Body>
 							<Card.Title>{card.title}</Card.Title>
 							<Card.Text>{card.text}</Card.Text>
-							<Button>View Details</Button>
+							<Link to="/dates/datespecs" state={{data: card}}>
+								<Button>View Details</Button>
+							</Link>
 						</Card.Body>
 					</Card>
 				))}
