@@ -5,6 +5,7 @@ import HomeLogo from '../../src/homelogo'
 import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const Home = () => {
   return (
@@ -13,13 +14,13 @@ const Home = () => {
       <div className="container">
         <h2 className="centered message">Welcome! Please choose which part of the date you wish to plan:</h2>
         <Link to='/dates/activities'>
-          <Button className="primary-button">Activities</Button>
+          <Button variant="outline-dark" className="primary-button">Activities</Button>
         </Link>
         <Link to='/dates/fooddrink'>
-          <Button className="primary-button">Food/Drink</Button>
+          <Button variant="outline-dark"className="primary-button">Food/Drink</Button>
         </Link>
         <Link to='/dates/oneonone'>
-          <Button className="primary-button">One-On-One</Button>
+          <Button variant="outline-dark" className="primary-button">One-On-One</Button>
         </Link>
       </div>
     </div>

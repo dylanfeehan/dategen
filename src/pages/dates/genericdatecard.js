@@ -20,7 +20,7 @@ class GenericDateCard extends React.Component {
               <Card.Title>{card.title}</Card.Title>
               <Card.Text>{card.text}</Card.Text>
               <Link to="/dates/datespecs" state={{data: card}}>
-                <Button>View Details</Button>
+                <Button variant="dark">View Details</Button>
               </Link>
             </Card.Body>
           </Card>

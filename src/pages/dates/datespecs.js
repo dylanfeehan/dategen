@@ -14,24 +14,30 @@ const DateSpecs = () => {
     <Card.Img src={data.image} />
     <div className='name-and-link'>
       <h1 style={{paddingLeft: '1rem', paddingTop:"1rem"}}>{data.title}</h1>
-      <a href={data.site} target="_blank" className="spec-link">
-       <Button variant="primary">visit website</Button>
-      </a>
+      <div className="sidebysidelinks">
+        <a href={data.directions} target="_blank" className="spec-link">
+        <Button variant="outline-dark">Directions</Button>
+        </a>
+        <a href={data.site} target="_blank" className="spec-link">
+        <Button variant="outline-dark">Website</Button>
+        </a>
+      </div>
     </div>
-    <Accordion defaultActiveKey="0">
-      <Accordion.Item eventKey="0">
+
+    <Accordion defaultActiveKey="0" alwaysOpen="true">
+      <Accordion.Item eventKey="0" >
         <Accordion.Header>About</Accordion.Header>
         <Accordion.Body>
           {data.text}
         </Accordion.Body>
       </Accordion.Item>
-      <Accordion.Item eventKey="1">
+      <Accordion.Item eventKey="1" >
         <Accordion.Header>Notes</Accordion.Header>
         <Accordion.Body>
           {data.notes}
         </Accordion.Body>
       </Accordion.Item>
-      <Accordion.Item eventKey="2">
+      <Accordion.Item eventKey="2" >
         <Accordion.Header>Reservations / Preparation</Accordion.Header>
         <Accordion.Body>
           {data.reservations}

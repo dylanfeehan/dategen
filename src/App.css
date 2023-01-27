@@ -23,19 +23,33 @@
 }
 
 .spec-link {
-  margin-top: .5rem;
+  margin-top: .6rem;
   margin-right: .5rem;
   grid-column: 2;
   text-align: right;
 }
 
+.sidebysidelinks {
+  display: flex;
+  flex-direction: horizontal;
+}
+
 
 .homepage {
+  background-color: lightgray;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 12rem;
 }
+
+.accordion-button:not(.collapsed) {
+  color: #ffffff;
+  background-color: #29008a;
+  box-shadow: inset 0 -1px 0 rgb(0, 0, 0 / 13%);
+}
+
 
 
 .datecard {

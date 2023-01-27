@@ -9,7 +9,7 @@ import '../../App.css'
 
 const MyNavbar = () => {
   return (
-      <Navbar sticky="top" bg="primary" variant="dark" className="">
+      <Navbar sticky="top" bg="dark" variant="light">
         <Container>
           <Nav className="d-flex justify-content-center align-items-center justify-content-center">
             <Navbar.Brand>
