@@ -1,25 +1,29 @@
 {
   "files": {
-    "main.css": "/static/css/main.3aa8dfe6.css",
-    "main.js": "/static/js/main.1ba7f382.js",
+    "main.css": "/static/css/main.6f7f3efd.css",
+    "main.js": "/static/js/main.f00d76b1.js",
     "static/js/787.8db6220c.chunk.js": "/static/js/787.8db6220c.chunk.js",
     "static/media/test_photo.jpg": "/static/media/test_photo.c26b9845d29249c73a37.jpg",
     "static/media/acacia.jpg": "/static/media/acacia.8a246807e515b1a83c6b.jpg",
     "static/media/girasole.jpg": "/static/media/girasole.83ed0962d716f9143ce4.jpg",
     "static/media/dinner.png": "/static/media/dinner.6c77d574c470fab2026b.png",
     "static/media/gijin.jpg": "/static/media/gijin.302b2f4b904f460cd8b4.jpg",
+    "static/media/bouldering.jpg": "/static/media/bouldering.896a790a548c2b4db833.jpg",
     "static/media/noodlehead.jpg": "/static/media/noodlehead.ef50fc4b528e36675b0d.jpg",
     "static/media/treat.jpg": "/static/media/treat.72c50eabff9868a84bb4.jpg",
     "static/media/allindia.jpg": "/static/media/allindia.5c17f32e89a5be9e71f2.jpg",
+    "static/media/rollerskating.jpg": "/static/media/rollerskating.3b4b1bff6cb9f5067589.jpg",
+    "static/media/pottery.jpg": "/static/media/pottery.9f66956ab957094e04f2.jpg",
+    "static/media/lightdategenlogo.png": "/static/media/lightdategenlogo.24a616717e3c73e798b3.png",
     "static/media/dateGen.svg": "/static/media/dateGen.dbab606cc1fd19a5074ab3bddd30600a.svg",
     "static/media/dark_gray.png": "/static/media/dark_gray.b0ea4704e540f73a3a48.png",
     "index.html": "/index.html",
-    "main.3aa8dfe6.css.map": "/static/css/main.3aa8dfe6.css.map",
-    "main.1ba7f382.js.map": "/static/js/main.1ba7f382.js.map",
+    "main.6f7f3efd.css.map": "/static/css/main.6f7f3efd.css.map",
+    "main.f00d76b1.js.map": "/static/js/main.f00d76b1.js.map",
     "787.8db6220c.chunk.js.map": "/static/js/787.8db6220c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3aa8dfe6.css",
-    "static/js/main.1ba7f382.js"
+    "static/css/main.6f7f3efd.css",
+    "static/js/main.f00d76b1.js"
   ]
 }
