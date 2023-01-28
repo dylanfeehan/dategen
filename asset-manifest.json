@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.9dd88dc9.css",
-    "main.js": "/static/js/main.60e8c557.js",
+    "main.css": "/static/css/main.be2ad2b1.css",
+    "main.js": "/static/js/main.01a72777.js",
     "static/js/787.8db6220c.chunk.js": "/static/js/787.8db6220c.chunk.js",
     "static/media/movie.jpg": "/static/media/movie.fe69052475d8dc084126.jpg",
     "static/media/test_photo.jpg": "/static/media/test_photo.c26b9845d29249c73a37.jpg",
@@ -10,6 +10,7 @@
     "static/media/contact.png": "/static/media/contact.19d776d81e1d4c4e899e.png",
     "static/media/fa-solid-900.ttf": "/static/media/fa-solid-900.b1a653db79258eeccc5d.ttf",
     "static/media/acacia.jpg": "/static/media/acacia.8a246807e515b1a83c6b.jpg",
+    "static/media/trans_sitename-overlay.png": "/static/media/trans_sitename-overlay.8235c5e7565fde8a7923.png",
     "static/media/bowling.jpg": "/static/media/bowling.11972ad82e23e778359e.jpg",
     "static/media/girasole.jpg": "/static/media/girasole.83ed0962d716f9143ce4.jpg",
     "static/media/dinner.png": "/static/media/dinner.6c77d574c470fab2026b.png",
@@ -36,12 +37,12 @@
     "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.e314b618134d5be20996.ttf",
     "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.4ee7f902d88f819e251c.woff2",
     "index.html": "/index.html",
-    "main.9dd88dc9.css.map": "/static/css/main.9dd88dc9.css.map",
-    "main.60e8c557.js.map": "/static/js/main.60e8c557.js.map",
+    "main.be2ad2b1.css.map": "/static/css/main.be2ad2b1.css.map",
+    "main.01a72777.js.map": "/static/js/main.01a72777.js.map",
     "787.8db6220c.chunk.js.map": "/static/js/787.8db6220c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9dd88dc9.css",
-    "static/js/main.60e8c557.js"
+    "static/css/main.be2ad2b1.css",
+    "static/js/main.01a72777.js"
   ]
 }
