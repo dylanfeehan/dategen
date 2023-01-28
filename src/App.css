@@ -12,6 +12,24 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.my-popover {
+  width: 15rem;
+}
+
+.special-link-container {
+  align-items: center;
+  text-align: center;
+}
+
+.form-container {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.form-group-with-margin {
+  margin-top: 1rem;
+}
 
 .nav-link {
   color: white !important;
