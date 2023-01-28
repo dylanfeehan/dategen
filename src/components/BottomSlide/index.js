@@ -11,26 +11,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const BottomSlide = () => {
   return (
-    <Carousel indicators={false} variant="light" className="styled-carousel fixed-bottom" style={{height: '6rem'}}>
+    <Carousel  controls={false} indicators={false} variant="light" className="styled-carousel fixed-bottom" style={{height: '6rem'}}>
         <Carousel.Item interval={2000}>
 					<img src={bottom} className="d-block w-100"/>
           <Carousel.Caption>
             <h3>Browse</h3>
-            <p>hand picked date options</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={2000}>
 					<img src={bottom} className="d-block w-100"/>
           <Carousel.Caption>
-            <h3>Choose</h3>
-            <p>your favorite ideas</p>
+            <h3>Laugh</h3>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={2000}>
 					<img src={bottom} className="d-block w-100"/>
           <Carousel.Caption> 
-            <h3>Enjoy</h3>
-            <p>your date night :)</p>
+            <h3>Date</h3>
           </Carousel.Caption>
         </Carousel.Item>
     </Carousel>

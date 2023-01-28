@@ -6,13 +6,17 @@ import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import sitename from '../assets/images/trans_sitename-overlay.png'
 
 const Home = () => {
   return (
     // this is basically the home page so.... lets add some shit
     <div>
       <div className="container">
-        <h2 className="centered message">Welcome! Please choose which part of the date you wish to plan:</h2>
+        <img src={sitename} alt="lol" width={300} style={{
+            marginTop: '2rem',
+            marginBottom: '2rem',
+        }}/>
         <Link to='/dates/activities'>
           <Button variant="outline-dark" className="primary-button">Activities</Button>
         </Link>

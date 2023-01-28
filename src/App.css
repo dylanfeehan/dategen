@@ -21,6 +21,13 @@
   text-align: center;
 }
 
+.nav-dropdown {
+  width: .5rem;
+}
+
+.narrow-boy {
+}
+
 .form-container {
   margin-top: 2rem;
   margin-left: 2rem;
@@ -93,7 +100,8 @@
 }
 .styled-carousel {
   display: grid !important;
-  height: 10rem;
+  height: 4rem !important;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
 .carousel-caption {
