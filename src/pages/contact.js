@@ -10,7 +10,7 @@ const Contact = () => {
   return (
 
     <div>
-      <img src={me} alt="me" height="300" style={{margin: 'auto', marginTop: '1rem', display: 'block', borderRadius: '50%'}}/>
+      <img src={me} alt="me" height="250" style={{margin: 'auto', marginTop: '1rem', display: 'block', borderRadius: '50%'}}/>
       <div className="contact-container">
         <i className="fas fa-envelope-square my-icon"></i>
         <h3>Email: dylanjfeehan@gmail.com</h3>
