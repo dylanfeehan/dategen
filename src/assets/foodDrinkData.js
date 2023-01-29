@@ -21,7 +21,7 @@ export const foodDrinkData = [
   },
   {
     title: "Treat",
-    text: "Enjoy a fantastic dinner in shadyside's premier italian restaurant",
+    text: "Tasty ice cream and waffles, run by an extremely cute old french couple.",
     image: require('./images/treat.jpg'),
     site: "https://www.treatpittsburgh.com/",
     reservations: "No.",
@@ -61,7 +61,7 @@ export const foodDrinkData = [
     image: require('./images/apresskibar.jpg'),
     site: "https://apresskibar.butcherandtherye.com/",
     reservations: "Possibly, contact Alyssa for assistance.",
-    notes: "park on potter and walk",
+    notes: "Parking garage.",
     directions: "https://www.google.com/maps/dir//Apr%C3%A8s-Ski+at+Butcher+and+the+Rye,+6th+Street,+Pittsburgh,+PA/@40.4423486,-80.0721927,12z/data=!3m1!5s0x8834f156639a3a21:0xd2cd795d2987fbe4!4m8!4m7!1m0!1m5!1m1!1s0x8834f15666b9ee7f:0xdfd18cd6d31d6940!2m2!1d-80.0021536!2d40.4423697",
   },
 ]

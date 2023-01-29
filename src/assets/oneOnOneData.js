@@ -3,7 +3,7 @@ import React from 'react';
 export const oneOnOneData = [
   {
     title: "Watch a Movie",
-    text: "Fantastic italian food in a beautiful tucked away basement restaurant in Shadyside.",
+    text: "Whats a better way to get to know each other than to not talk for 2 hours?",
     image: require('./images/movie.jpg'),
     site: "",
     reservations: "No, unless going to movie theater. Then about 2 hours of advance is necessary.",
@@ -16,7 +16,7 @@ export const oneOnOneData = [
     image: require('./images/baking.jpg'),
     site: "",
     reservations: "Yes, must shop for ingredients and necessary tools.",
-    notes: "Baked goods -> kisses. Accentuate with wine.",
+    notes: "Baked goods lead to kisses. Accentuate with wine.",
     directions: "https://www.google.com/maps/dir//5447+Potter+Street,+Pittsburgh,+PA/@40.4527662,-79.9384903,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x8834f213f697e5a5:0xef47d35da4f3b842!2m2!1d-79.9358023!2d40.4547724",
   },
   {
@@ -39,7 +39,7 @@ export const oneOnOneData = [
   },
   {
     title: "Paint Together",
-    text: "Too much money in your wallet? enjoy a view of the city while blowing all of your money on average food",
+    text: "Impress one another with your inborn artistic abilities.",
     image: require('./images/painttogether.jpg'),
     site: "",
     reservations: "Yes, painting supplies necessary.",
@@ -48,7 +48,7 @@ export const oneOnOneData = [
   },
   {
     title: "Cook Together",
-    text: "Who doesn'twww like tasty nutritious meals?",
+    text: "Who doesn't like tasty nutritious meals?",
     image: require('./images/cooktogether.jpg'),
     site: "",
     reservations: "Yes, must shop for ingredients and necessary tools.",

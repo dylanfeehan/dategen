@@ -74,7 +74,7 @@ const popover = (
     <Popover.Body style={{
       textAlign: 'center'
     }}
-      as="p">Do you really think I implemented sign up functionality? You're the only person using this lol. {isChecked ? "btw, i'm excited for the cuddles later :)" : "BTW, you didn't think i'd notice that you didn't check the cuddle box? you're so cruel lol"}</Popover.Body>
+      as="p">Do you really think I implemented sign up functionality? You're the only person using this lol. {isChecked ? "btw, thanks for checking the cuddle box" : "BTW, you didn't think i'd notice that you didn't check the cuddle box? you're so cruel lol"}</Popover.Body>
     <div className="special-link-container">
     <Link to="/">
       <Button variant="outline-dark">Back to Home</Button>
@@ -88,7 +88,7 @@ const popover = (
     <Form>
       <Form.Group className="form-group-with-margin">
         <Form.Label>Full Name</Form.Label>
-        <Form.Control type="email" placeholder="Jen Something" />
+        <Form.Control type="text" placeholder="Jen Something" />
       </Form.Group>
       <Form.Group className="form-group-with-margin">
         <Form.Label>Email Address</Form.Label>
