@@ -7,7 +7,7 @@ import MyNavbar from './components/Navbar/index.js';
 import { HashRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages';
 import About from './pages/about'
-import Blogs from './pages/blogs'
+import Upload from './pages/upload'
 import SignUp from './pages/signup'
 import Contact from './pages/contact'
 import Activities from './pages/dates/activities'
@@ -32,7 +32,7 @@ function App() {
       <Route exact path='/' element={<Home />} />
       <Route path='/about' element={<About/>} />
       <Route path='/contact' element={<Contact/>} /> 
-      <Route path='/blogs' element={<Blogs/>} />
+      <Route path='/blogs' element={<Upload />} />
       <Route path='/sign-up' element={<SignUp/>} />
       <Route path='/dates/oneonone' element={<GenericDateCard data={oneOnOneData}/>} />
       <Route path='/dates/activities' element={<GenericDateCard data={activityData}/>} />
