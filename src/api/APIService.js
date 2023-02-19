@@ -7,7 +7,7 @@ export default class APIService {
   }
 
   static UploadDate(dateSpecs) {
-    console.log(dateSpecs)
+
     return fetch('http://127.0.0.1:5000/uploaddate/', {
       'method': 'PUT',
       headers: {

@@ -3,7 +3,8 @@ import React from 'react';
 export const foodDrinkData = [
   {
     title: "Girasole",
-    text: "Fantastic italian food in a beautiful tucked away basement restaurant in Shadyside.",
+    type: "fooddrink",
+    details: "Fantastic italian food in a beautiful tucked away basement restaurant in Shadyside.",
     image: require('./images/girasole.jpg'),
     site: "http://girasolepgh.com/",
     reservations: "Not required, but recommended. A follow up would be Cappy's Cafe",
@@ -12,7 +13,8 @@ export const foodDrinkData = [
   },
   {
     title: "Acacia",
-    text: "Amazing cocktails in a ... \"blink and you'll miss it\" speakeasy. Known for their prohibition style aesthetic and drinks, this bar will not dissapoint.",
+    type: "fooddrink",
+    details: "Amazing cocktails in a ... \"blink and you'll miss it\" speakeasy. Known for their prohibition style aesthetic and drinks, this bar will not dissapoint.",
     image: require('./images/acacia.jpg'),
     site: "http://acaciacocktails.com/",
     reservations: "No",
@@ -21,7 +23,8 @@ export const foodDrinkData = [
   },
   {
     title: "Treat",
-    text: "Tasty ice cream and waffles, run by an extremely cute old french couple.",
+    type: "fooddrink",
+    details: "Tasty ice cream and waffles, run by an extremely cute old french couple.",
     image: require('./images/treat.jpg'),
     site: "https://www.treatpittsburgh.com/",
     reservations: "No.",
@@ -30,7 +33,8 @@ export const foodDrinkData = [
   },
   {
     title: "Gi Jin",
-    text: "Dine on the finest sushi in all of pittsburgh",
+    type: "fooddrink",
+    details: "Dine on the finest sushi in all of pittsburgh",
     image: require('./images/gijin.jpg'),
     site: "https://gi-jin.com/",
     reservations: "Yes, contact Alyssa for assistanc.",
@@ -39,7 +43,8 @@ export const foodDrinkData = [
   },
   {
     title: "All India",
-    text: "Enjoy some authentic indian food at this... somewhat rundown looking establishment.",
+    type: "fooddrink",
+    details: "Enjoy some authentic indian food at this... somewhat rundown looking establishment.",
     image: require('./images/allindia.jpg'),
     site: "https://www.allindiapittsburgh.com/",
     reservations: "No. ",
@@ -48,7 +53,8 @@ export const foodDrinkData = [
   },
   {
     title: "Noodlehead",
-    text: "Enjoy fantastic thai food in eastern shadyside's homiest restaurant.",
+    type: "fooddrink",
+    details: "Enjoy fantastic thai food in eastern shadyside's homiest restaurant.",
     image: require('./images/noodlehead.jpg'),
     site: "http://noodleheadpgh.com/",
     reservations: "Not necessary, wait time is around 15 minutes.",
@@ -57,7 +63,8 @@ export const foodDrinkData = [
   },
   {
     title: "Apres Ski Bar",
-    text: "Explore this beautiful ski-themed bar, a fancy and expensive addition to downtown Pittsburgh's \"Butcher and the Rye\"",
+    type: "fooddrink",
+    details: "Explore this beautiful ski-themed bar, a fancy and expensive addition to downtown Pittsburgh's \"Butcher and the Rye\"",
     image: require('./images/apresskibar.jpg'),
     site: "https://apresskibar.butcherandtherye.com/",
     reservations: "Possibly, contact Alyssa for assistance.",

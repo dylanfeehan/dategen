@@ -1,5 +1,7 @@
 //
 import React from 'react'
+import {Component} from 'react'
+import { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -10,10 +12,40 @@ import {Link} from 'react-router-dom';
 
 
 class FoodDrink extends React.Component {
+
+	constructor(props) {
+		super(props)
+		this.state = {data: []};
+	}
+
+	componentDidMount() {
+		console.log("wtf")
+		fetch('http://127.0.0.1:5000/getdates/', {
+			'methods': 'GET',
+			headers: {
+				'Content-Type': 'application/JSON',
+			}
+		})
+		.then(resp=>resp.json())
+		.then(resp=>this.setState(resp))
+		.then(resp=>console.log(resp))
+		.then(error=>console.log(error))
+		//.then(data=>this.setState({data}))
+	}
+
+
+
 	render() {
+		// now i just need to... fetch the data!!
+		// big booty ass cheecks
+
+		const {obj} = this.state
+		console.log("i'm skylar white yo");
+		console.log(obj);
+
 		const { data } = this.props;
 		return (
-			<div>
+			<div> 
 				{data.map((card, index) => (
 					<Card style={{width: '18rem'}} key={index} className="mx-auto datecard">
 					 	<Card.Img variant="top" src={card.image} alt="picture"/>

@@ -3,7 +3,8 @@ import React from 'react';
 export const oneOnOneData = [
   {
     title: "Watch a Movie",
-    text: "Whats a better way to get to know each other than to not talk for 2 hours?",
+    type: "oneonone",
+    details: "Whats a better way to get to know each other than to not talk for 2 hours?",
     image: require('./images/movie.jpg'),
     site: "",
     reservations: "No, unless going to movie theater. Then about 2 hours of advance is necessary.",
@@ -12,7 +13,8 @@ export const oneOnOneData = [
   },
   {
     title: "Bake Together",
-    text: "Enjoy a night in of baking and enjoy the fruits of your labor.",
+    type: "oneonone",
+    details: "Enjoy a night in of baking and enjoy the fruits of your labor.",
     image: require('./images/baking.jpg'),
     site: "",
     reservations: "Yes, must shop for ingredients and necessary tools.",
@@ -21,7 +23,8 @@ export const oneOnOneData = [
   },
   {
     title: "Play a Drinking Game",
-    text: "Loosen up with some fun one-on-one drinking games!",
+    type: "oneonone",
+    details: "Loosen up with some fun one-on-one drinking games!",
     image: require('./images/drinkinggame.png'),
     site: "",
     reservations: "Yes, must get drinks from a liquor store (some people don't like beer)",
@@ -30,7 +33,8 @@ export const oneOnOneData = [
   },
   {
     title: "Play a Board Game",
-    text: "Catan? It's really all I have :(",
+    type: "oneonone",
+    details: "Catan? It's really all I have :(",
     image: require('./images/boardgame.jpg'),
     site: "",
     reservations: "No",
@@ -39,7 +43,8 @@ export const oneOnOneData = [
   },
   {
     title: "Paint Together",
-    text: "Impress one another with your inborn artistic abilities.",
+    type: "oneonone",
+    details: "Impress one another with your inborn artistic abilities.",
     image: require('./images/painttogether.jpg'),
     site: "",
     reservations: "Yes, painting supplies necessary.",
@@ -48,7 +53,8 @@ export const oneOnOneData = [
   },
   {
     title: "Cook Together",
-    text: "Who doesn't like tasty nutritious meals?",
+    type: "oneonone",
+    details: "Who doesn't like tasty nutritious meals?",
     image: require('./images/cooktogether.jpg'),
     site: "",
     reservations: "Yes, must shop for ingredients and necessary tools.",
