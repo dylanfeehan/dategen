@@ -7,7 +7,8 @@ import '../../App.css'
 
 const DateSpecs = () => {
   const location = useLocation();
-  const {data} = location.state;
+  const data = location.state.data;
+  console.log(data)
   return (
     <div>
     {/*<Card.Img src={data.image} />*/}
