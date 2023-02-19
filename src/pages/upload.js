@@ -2,6 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css'
@@ -34,7 +35,9 @@ class Upload extends React.Component{
     event.preventDefault();
     console.log(JSON.stringify(this.state))
 
-    APIService.UploadDate(this.state).then(resp=>console.log(resp)).then(error=>console.log(error));
+    //APIService.UploadDate(this.state).then(resp=>console.log(resp)).then(error=>console.log(error));
+    //this.props.history.push('/uploadSuccess');
+    // it is going to be done here
   }
 
   render() {
@@ -116,7 +119,6 @@ class Upload extends React.Component{
               Please provide directions from google maps, starting with an unspecified location
             </Form.Text>
           </Form.Group>
-
           <Button variant="dark" type="submit" style={{ display: 'block', margin: 'auto' }}>Upload Date</Button>
         </Form>
       </div>
@@ -141,4 +143,4 @@ class Upload extends React.Component {
 }
 export default Upload
 */
-export default Upload;
+export default (Upload);

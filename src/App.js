@@ -9,6 +9,7 @@ import Home from './pages';
 import About from './pages/about'
 import Upload from './pages/upload'
 import Admin from './pages/admin';
+import UploadSuccess from './pages/uploadSuccess';
 import SignUp from './pages/signup'
 import Contact from './pages/contact'
 import Activities from './pages/dates/activities'
@@ -36,6 +37,7 @@ function App() {
       <Route path='/upload' element={<Upload />} />
       <Route path='/admin' element={<Admin />} />
       <Route path='/sign-up' element={<SignUp/>} />
+      <Route path='/uploadSucccess' element ={<UploadSuccess />} />
       <Route path='/dates/oneonone' element={<GenericDateCard dateType={'oneonone'}/>} />
       <Route path='/dates/activities' element={<GenericDateCard dateType={'activity'}/>} />
       <Route path='/dates/fooddrink' element={<GenericDateCard dateType={'fooddrink'}/>} />
