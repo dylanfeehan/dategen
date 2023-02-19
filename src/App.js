@@ -37,7 +37,7 @@ function App() {
       <Route path='/upload' element={<Upload />} />
       <Route path='/admin' element={<Admin />} />
       <Route path='/sign-up' element={<SignUp/>} />
-      <Route path='/uploadSucccess' element ={<UploadSuccess />} />
+      <Route path='/uploadSuccess' element ={<UploadSuccess />} />
       <Route path='/dates/oneonone' element={<GenericDateCard dateType={'oneonone'}/>} />
       <Route path='/dates/activities' element={<GenericDateCard dateType={'activity'}/>} />
       <Route path='/dates/fooddrink' element={<GenericDateCard dateType={'fooddrink'}/>} />
