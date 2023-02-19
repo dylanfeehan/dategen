@@ -8,10 +8,9 @@ import '../../App.css'
 const DateSpecs = () => {
   const location = useLocation();
   const {data} = location.state;
-  console.log(data);
   return (
     <div>
-    <Card.Img src={data.image} />
+    {/*<Card.Img src={data.image} />*/}
     <div className='name-and-link'>
       <h1 style={{paddingLeft: '1rem', paddingTop:"1rem"}}>{data.title}</h1>
       <div className="sidebysidelinks">
@@ -28,7 +27,7 @@ const DateSpecs = () => {
       <Accordion.Item eventKey="0" >
         <Accordion.Header>About</Accordion.Header>
         <Accordion.Body>
-          {data.text}
+          {data.details}
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="1" >

@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+import sys
 import json
 from flask_sqlalchemy import SQLAlchemy
 import datetime
@@ -48,6 +49,21 @@ datesSchema = DatesSchema(many=True)
 def index():
   return "you are making a get request to the api homepage"
 
+
+## trying to add functaionalry to get date by type
+@api.route('/getdates/<dateType>/', methods=['GET'])
+def get_dates_by_type(dateType):
+  if(dateType != 'oneonone' and dateType != 'activity' and dateType != 'fooddrink'):
+    print('error. invalid date type. quitting....')
+    sys.exit()
+  print('getting dtes of type ' + dateType)
+  datesByType = Dates.query.filter(Dates.type == dateType).all()
+  print('before .. idk')
+  print(datesByType)
+  results = datesSchema.jsonify(datesByType)
+  print('results')
+  print(results)
+  return results
 
 @api.route('/getdates/', methods=['GET'])
 def get_dates():
