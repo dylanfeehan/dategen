@@ -9,6 +9,26 @@ import picture from '../../assets/images/test_photo.jpg';
 import {Link} from 'react-router-dom';
 
 class GenericDateCard extends React.Component {
+  constructor(props)   {
+    super(props)
+    this.state = {data: []};
+  }
+
+  componentDidMount() {
+    fetch("http://127.0.0.1:5000/getdates/", {
+      'methods': 'GET', 
+      headers: {
+        'Content-Type': 'application/JSON',
+      }
+    })
+    .then(resp=>resp.json())
+    .then(resp=>console.log(resp))
+    .then(resp=>this.setState(resp))
+    .then(error=>console.log(error));
+  };
+
+
+
   render() {
     const {data} = this.props;
     return (

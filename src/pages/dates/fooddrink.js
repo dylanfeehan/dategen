@@ -26,10 +26,10 @@ class FoodDrink extends React.Component {
 				'Content-Type': 'application/JSON',
 			}
 		})
-		.then(resp=>resp.json())
-		.then(resp=>this.setState(resp))
-		.then(resp=>console.log(resp))
-		.then(error=>console.log(error))
+		.then(resp =>resp.json())
+		.then(resp =>this.setState(resp))
+		.then(resp =>console.log(resp))
+		.then(error =>console.log(error))
 		//.then(data=>this.setState({data}))
 	}
 
