@@ -89,6 +89,22 @@ def upload_date():
   db.session.commit()
   return "date added"
 
+@api.route('/deletedate/', methods=['DELETE']) # what method?
+def delete_date():
+  jsonObject = request.get_json()
+  id = int(jsonObject)
+  #id
+  #print("receiving delete request! , hrees is id")
+  #print(id)
+  #dateToDelete = db.get_or_404(Dates, id);
+  dateToDelete = Dates.query.get(id)
+  if(dateToDelete == None): 
+    return "Date not found", 404
+#
+  db.session.delete(dateToDelete)
+  db.session.commit()
+  return "", 204
+
 @api.route('/putdate/', methods=['GET'])
 def put_dates():
   type = "oneonone"
