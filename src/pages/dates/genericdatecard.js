@@ -48,7 +48,7 @@ const GenericDateCard = (props) => {
                   >
                   </Dropdown.Toggle>
                   <Dropdown.Menu variant='dark' style={{}}>
-                    <Dropdown.Item>Edit</Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/upload" state={{request: "Edit", data: cardObj}}>Edit</Dropdown.Item>
                     <Dropdown.Item>Delete</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
@@ -58,7 +58,6 @@ const GenericDateCard = (props) => {
               <Link to="/dates/datespecs" state={{ data: cardObj }}>
                 <Button variant="dark">View Details</Button>
               </Link>
-
             </Card.Body>
           </Card.Header>
 

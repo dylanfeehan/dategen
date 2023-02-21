@@ -1,9 +1,10 @@
 
 export default class APIService {
 
-  static UpdateDate(id, dateSpecs) {
-
-
+  static UpdateDate(dateSpecs) {
+    console.log("from within update date");
+    console.log(dateSpecs);
+    return null;
   }
 
   static UploadDate(dateSpecs) {
