@@ -89,14 +89,25 @@ def upload_date():
   db.session.commit()
   return "date added"
 
+@api.route('/updatedate/', methods=['PUT'])
+def update_date():
+  print('received update date requets')
+  jsonObject = request.get_json()
+  print(jsonObject)
+  date = Dates.query.get(jsonObject['id'])
+  for key in jsonObject:
+    # TODO: make request not part of state in object, rather part of state in functional components
+    # id can't be changed, and request is used as state (probably change this??? in)
+    if(not(key == 'id' or key == 'request')):
+      setattr(date, key, jsonObject[key])
+  db.session.commit()
+  return '', 204
+
+
 @api.route('/deletedate/', methods=['DELETE']) # what method?
 def delete_date():
   jsonObject = request.get_json()
   id = int(jsonObject)
-  #id
-  #print("receiving delete request! , hrees is id")
-  #print(id)
-  #dateToDelete = db.get_or_404(Dates, id);
   dateToDelete = Dates.query.get(id)
   if(dateToDelete == None): 
     return "Date not found", 404
