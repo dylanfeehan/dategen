@@ -103,8 +103,6 @@ def update_date():
   db.session.commit()
   return '', 204
 
-
-
 @api.route('/deletedate/', methods=['DELETE']) # what method?
 def delete_date():
   jsonObject = request.get_json()
