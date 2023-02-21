@@ -59,6 +59,7 @@ const GenericDateCard = (props) => {
     });
   };
 
+
   return (
     <div>
       {arr.map((cardObj, index) => (
