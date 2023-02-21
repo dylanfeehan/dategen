@@ -76,6 +76,7 @@ def upload_date():
   jsonObject = request.get_json()
   print(jsonObject)
 
+
   dateType = jsonObject['type']
   title = jsonObject['title']
   site = jsonObject['site']
