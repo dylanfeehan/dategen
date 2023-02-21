@@ -7,6 +7,10 @@ export default class APIService {
     return null;
   }
 
+  static DeleteDate(id) {
+    
+  }
+
   static UploadDate(dateSpecs) {
 
     return fetch('http://127.0.0.1:5000/uploaddate/', {
