@@ -1,9 +1,7 @@
 
 from flask import Flask, jsonify, request
 import sys
-import json
 from flask_sqlalchemy import SQLAlchemy
-import datetime
 from flask_marshmallow import Marshmallow
 from flask_cors import CORS
 
@@ -15,10 +13,7 @@ db = SQLAlchemy(api)
 
 ma = Marshmallow(api)
 
-# types: 
-#   fooddrink
-#   oneonone
-#   activity
+# type is fooddrink oneonone or activity
 class Dates(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   type = db.Column(db.String())
@@ -45,46 +40,32 @@ class DatesSchema(ma.Schema):
 dateSchema = DatesSchema()
 datesSchema = DatesSchema(many=True)
 
-
-@api.route("/", methods=['GET'])
-def index():
-  return "you are making a get request to the api homepage"
-
-
-## trying to add functaionalry to get date by type
+# get date by type
 @api.route('/getdates/<dateType>/', methods=['GET'])
 def get_dates_by_type(dateType):
   if(dateType != 'oneonone' and dateType != 'activity' and dateType != 'fooddrink'):
     print('error. invalid date type. quitting....')
     sys.exit()
-  print('getting dtes of type ' + dateType)
   datesByType = Dates.query.filter(Dates.type == dateType).all()
-  print('before .. idk')
-  print(datesByType)
   results = datesSchema.jsonify(datesByType)
-  print('results')
-  print(results)
   return results
 
+# get all for debuggin
 @api.route('/getdates/', methods=['GET'])
 def get_dates():
   all_dates = Dates.query.all()
   results = datesSchema.jsonify(all_dates)
   return results
 
+# upload new
 @api.route("/uploaddate/", methods=['PUT'])
 def upload_date():
   jsonObject = request.get_json()
-  print(jsonObject)
 
-  dateType = jsonObject['type']
-  title = jsonObject['title']
-  site = jsonObject['site']
-  details = jsonObject['details']
-  reservations = jsonObject['reservations']
-  notes = jsonObject['notes']
-  directions =jsonObject['directions']
-  date = Dates(title, dateType, site, details, reservations, notes, directions)
+  date = Dates(jsonObject['title'], jsonObject['type'], 
+    jsonObject['site'], jsonObject['details'], 
+    jsonObject['reservations'], jsonObject['notes'], jsonObject['directions'])
+
   db.session.add(date)
   db.session.commit()
   return "date added"
@@ -110,24 +91,10 @@ def delete_date():
   dateToDelete = Dates.query.get(id)
   if(dateToDelete == None): 
     return "Date not found", 404
-#
+
   db.session.delete(dateToDelete)
   db.session.commit()
   return "", 204
-
-@api.route('/putdate/', methods=['GET'])
-def put_dates():
-  type = "oneonone"
-  title = "kiss"
-  site = "dategen.fun"
-  details = "haha makeout yo"
-  reservations = "no"
-  notes = "no notes, just kiss yo"
-  directions = "my house"
-  date = Dates(type, title, site, details, reservations, notes, directions)
-  db.session.add(date)
-  db.session.commit()
-  return "i have added the date"
 
 if __name__ == '__main__':
   api.run(debug=True)
