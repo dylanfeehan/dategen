@@ -52,11 +52,7 @@ const GenericDateCard = (props) => {
     //
 
     setShowConfirmation(false);
-    navigate("/uploadSuccess", {
-      state: {
-        action: 'Delete',
-      }
-    });
+    navigate("/deleteSuccess");
   };
 
 
@@ -78,7 +74,8 @@ const GenericDateCard = (props) => {
                   >
                   </Dropdown.Toggle>
                   <Dropdown.Menu variant='dark' style={{}}>
-                    <Dropdown.Item as={Link} to="/upload" state={{ request: "Edit", data: cardObj }}>Edit</Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/edit" state={{ request: "Edit", data: cardObj }}>Edit</Dropdown.Item>
+                    {/*<Dropdown.Item as={Link} to="/upload" state={{ request: "Edit", data: cardObj }}>Edit</Dropdown.Item> */}
 
                     <Dropdown.Item onClick={handleDeleteClick}>Delete</Dropdown.Item>
                     <Modal show={showConfirmation} onHide={handleClose}>

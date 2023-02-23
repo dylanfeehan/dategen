@@ -77,7 +77,6 @@ def upload_date():
   jsonObject = request.get_json()
   print(jsonObject)
 
-
   dateType = jsonObject['type']
   title = jsonObject['title']
   site = jsonObject['site']
@@ -99,7 +98,7 @@ def update_date():
   for key in jsonObject:
     # TODO: make request not part of state in object, rather part of state in functional components
     # id can't be changed, and request is used as state (probably change this??? in)
-    if(not(key == 'id' or key == 'request')):
+    if(not(key == 'id')):
       setattr(date, key, jsonObject[key])
   db.session.commit()
   return '', 204

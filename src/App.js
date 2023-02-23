@@ -8,21 +8,18 @@ import { HashRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages';
 import About from './pages/about'
 import Upload from './pages/upload'
+import Edit from './pages/edit'
 import Admin from './pages/admin';
 import UploadSuccess from './pages/uploadSuccess';
+import EditSuccess from './pages/editSuccess';
+import DeleteSuccess from './pages/deleteSuccess';
 import SignUp from './pages/signup'
 import Contact from './pages/contact'
-import Activities from './pages/dates/activities'
-import FoodDrink from './pages/dates/fooddrink'
 import GenericDateCard from './pages/dates/genericdatecard';
-import OneOnOne from './pages/dates/oneonone';
 import DateSpecs from './pages/dates/datespecs';
 import logo from './dateGen.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BottomSlides from './components/BottomSlide/index.js';
-import {foodDrinkData} from "./assets/foodDrinkData";
-import {activityData} from "./assets/activityData";
-import {oneOnOneData} from "./assets/oneOnOneData";
 
 function App() {
   return (
@@ -35,9 +32,12 @@ function App() {
       <Route path='/about' element={<About/>} />
       <Route path='/contact' element={<Contact/>} /> 
       <Route path='/upload' element={<Upload />} />
+      <Route path='/edit' element={<Edit />} />
       <Route path='/admin' element={<Admin />} />
       <Route path='/sign-up' element={<SignUp/>} />
       <Route path='/uploadSuccess' element ={<UploadSuccess />} />
+      <Route path='/editSuccess' element={<EditSuccess />} />
+      <Route path='/deleteSuccess' element={<DeleteSuccess />} />
       <Route path='/dates/oneonone' element={<GenericDateCard dateType={'oneonone'}/>} />
       <Route path='/dates/activities' element={<GenericDateCard dateType={'activity'}/>} />
       <Route path='/dates/fooddrink' element={<GenericDateCard dateType={'fooddrink'}/>} />
