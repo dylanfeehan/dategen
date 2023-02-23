@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import APIService from '../api/APIService';
-import DateForm from './dateform';
+import DateForm from '../components/dateform';
 import { useNavigate } from 'react-router-dom';
 
 const Edit = () => {

@@ -4,7 +4,7 @@ import logo from "../../dateGen.svg";
 //import dinner from "../images/dinner.png";
 //import rollerskate from "../images/rollerskating.png"
 //import movies from "../images/movie_theater.png"
-import bottom from "../images/dark_gray.png"
+import bottom from '../../assets/images/dark_gray.png'
 import Carousel from "react-bootstrap/Carousel";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';

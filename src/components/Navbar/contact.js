@@ -1,9 +1,9 @@
 import React from 'react';
-import me from "../assets/images/contact.png"
+import me from '../../assets/images/contact.png'
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { MDBIcon } from 'mdb-react-ui-kit';
-import '../App.css';
+import '../../App.css'
 
 
 const Contact = () => {

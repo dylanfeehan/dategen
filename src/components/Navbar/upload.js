@@ -1,9 +1,9 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import '../App.css'
+import '../../App.css';
 import { useNavigate } from 'react-router-dom';
-import APIService from '../api/APIService';
-import DateForm from './dateform';
+import APIService from '../../api/APIService';
+import DateForm from '../dateform';
 
 function Upload() {
 

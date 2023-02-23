@@ -6,15 +6,15 @@ import './App.css';
 import MyNavbar from './components/Navbar/index.js';
 import { HashRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages';
-import About from './pages/about'
-import Upload from './pages/upload'
+import About from './components/Navbar/about'
+import Upload from './components/Navbar/upload'
 import Edit from './pages/edit'
-import Admin from './pages/admin';
+import Admin from './components/Navbar/admin';
 import UploadSuccess from './pages/uploadSuccess';
 import EditSuccess from './pages/editSuccess';
 import DeleteSuccess from './pages/deleteSuccess';
-import SignUp from './pages/signup'
-import Contact from './pages/contact'
+import SignUp from './components/Navbar/signup'
+import Contact from './components/Navbar/contact'
 import GenericDateCard from './pages/dates/genericdatecard';
 import DateSpecs from './pages/dates/datespecs';
 import logo from './dateGen.svg';
