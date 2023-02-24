@@ -1,0 +1,6 @@
+Flask-SQLAlchemy==3.0.3
+SQLAlchemy==2.0.2
+Flask==2.2.2
+Flask-Cors==3.0.10
+flask-marshmallow==0.14.0
+gunicorn==20.1.0

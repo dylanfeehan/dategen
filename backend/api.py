@@ -5,13 +5,25 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_cors import CORS
 
-api = Flask(__name__)
-api.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
-CORS(api)
+homepage = """
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Home page</title>
+	</head>
+	<body>
+    <p>New environment who dis</p>
+	</body>
+</html>
+"""
 
-db = SQLAlchemy(api)
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+CORS(app)
 
-ma = Marshmallow(api)
+db = SQLAlchemy(app)
+
+ma = Marshmallow(app)
 
 # type is fooddrink oneonone or activity
 class Dates(db.Model):
@@ -40,8 +52,12 @@ class DatesSchema(ma.Schema):
 dateSchema = DatesSchema()
 datesSchema = DatesSchema(many=True)
 
+@app.route('/', methods=['GET'])
+def index():
+  return homepage
+
 # get date by type
-@api.route('/getdates/<dateType>/', methods=['GET'])
+@app.route('/getdates/<dateType>/', methods=['GET'])
 def get_dates_by_type(dateType):
   if(dateType != 'oneonone' and dateType != 'activity' and dateType != 'fooddrink'):
     print('error. invalid date type. quitting....')
@@ -51,14 +67,14 @@ def get_dates_by_type(dateType):
   return results
 
 # get all for debuggin
-@api.route('/getdates/', methods=['GET'])
+@app.route('/getdates/', methods=['GET'])
 def get_dates():
   all_dates = Dates.query.all()
   results = datesSchema.jsonify(all_dates)
   return results
 
 # upload new
-@api.route("/uploaddate/", methods=['PUT'])
+@app.route("/uploaddate/", methods=['PUT'])
 def upload_date():
   jsonObject = request.get_json()
 
@@ -70,7 +86,7 @@ def upload_date():
   db.session.commit()
   return "date added"
 
-@api.route('/updatedate/', methods=['PUT'])
+@app.route('/updatedate/', methods=['PUT'])
 def update_date():
   print('received update date requets')
   jsonObject = request.get_json()
@@ -84,7 +100,7 @@ def update_date():
   db.session.commit()
   return '', 204
 
-@api.route('/deletedate/', methods=['DELETE']) # what method?
+@app.route('/deletedate/', methods=['DELETE']) # what method?
 def delete_date():
   jsonObject = request.get_json()
   id = int(jsonObject)
@@ -97,4 +113,4 @@ def delete_date():
   return "", 204
 
 if __name__ == '__main__':
-  api.run(debug=True)
+  app.run(debug=True)
