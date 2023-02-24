@@ -1,4 +1,3 @@
-
 from flask import Flask, jsonify, request
 import sys
 from flask_sqlalchemy import SQLAlchemy
@@ -22,7 +21,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 CORS(app)
 
 db = SQLAlchemy(app)
-
 ma = Marshmallow(app)
 
 # type is fooddrink oneonone or activity
@@ -67,11 +65,19 @@ def get_dates_by_type(dateType):
   return results
 
 # get all for debuggin
-@app.route('/getdates/', methods=['GET'])
+@app.route('/debug/getdates/', methods=['GET'])
 def get_dates():
   all_dates = Dates.query.all()
   results = datesSchema.jsonify(all_dates)
   return results
+
+@app.route('/debug/putdate/', methods=['GET'])
+def put_date():
+  date = Dates('test title', 'oneonone', 'no website', 'no details sorry debuggin', 'no res', 'no notes big  boy', 'go over there')
+
+  db.session.add(date)
+  db.session.commit()
+  return 'placed date, find it in /debug/getdates/'
 
 # upload new
 @app.route("/uploaddate/", methods=['PUT'])
@@ -112,5 +118,16 @@ def delete_date():
   db.session.commit()
   return "", 204
 
+
+@app.cli.command('initdb')
+def deploy():
+  print("\nINITIALIZING DATABASE\n")
+  """Deploy the application."""
+  with app.app_context():
+    print("CREATING DATABASE ")
+    db.create_all()
+
+
 if __name__ == '__main__':
   app.run(debug=True)
+
