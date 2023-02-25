@@ -1,9 +1,11 @@
 services:
+  # the name of the api container
   api:
     build:
       context: .
       dockerfile: Dockerfile.api
     image: react-flask-app-api
+  # the name of the client container
   client:
     build:
       context: .
