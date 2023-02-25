@@ -4840,6 +4840,7 @@ __metadata:
     "@fortawesome/fontawesome-free": ^6.3.0
     bootstrap: ^5.2.3
     mdb-react-ui-kit: ^5.1.0
+    nginx: ^1.0.8
     react: ^18.2.0
     react-bootstrap: ^2.7.2
     react-bootstrap-icons: ^1.10.2
@@ -8758,6 +8759,18 @@ __metadata:
   version: 2.6.2
   resolution: "neo-async@npm:2.6.2"
   checksum: deac9f8d00eda7b2e5cd1b2549e26e10a0faa70adaa6fdadca701cc55f49ee9018e427f424bac0c790b7c7e2d3068db97f3093f1093975f2acb8f8818b936ed9
+  languageName: node
+  linkType: hard
+
+"nginx@npm:^1.0.8":
+  version: 1.0.8
+  resolution: "nginx@npm:1.0.8"
+  dependencies:
+    chalk: ^4.1.0
+    commander: ^7.2.0
+  bin:
+    nginx-install: index.js
+  checksum: 4ef6a7ab341b981b555247eb7ebc9e7e5fc5bdb13fadcfe646604eefef267e994997bb499562bafbd9a1f6495faa73ac6f8056235cecaad0a84e13f2a114b1e3
   languageName: node
   linkType: hard
 
