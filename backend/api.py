@@ -55,7 +55,7 @@ def index():
   return homepage
 
 # get date by type
-@app.route('/getdates/<dateType>/', methods=['GET'])
+@app.route('/api/getdates/<dateType>/', methods=['GET'])
 def get_dates_by_type(dateType):
   if(dateType != 'oneonone' and dateType != 'activity' and dateType != 'fooddrink'):
     print('error. invalid date type. quitting....')
@@ -65,13 +65,13 @@ def get_dates_by_type(dateType):
   return results
 
 # get all for debuggin
-@app.route('/debug/getdates/', methods=['GET'])
+@app.route('/api/debug/getdates/', methods=['GET'])
 def get_dates():
   all_dates = Dates.query.all()
   results = datesSchema.jsonify(all_dates)
   return results
 
-@app.route('/debug/putdate/', methods=['GET'])
+@app.route('/api/debug/putdate/', methods=['GET'])
 def put_date():
   date = Dates('test title', 'oneonone', 'no website', 'no details sorry debuggin', 'no res', 'no notes big  boy', 'go over there')
 
@@ -80,7 +80,7 @@ def put_date():
   return 'placed date, find it in /debug/getdates/'
 
 # upload new
-@app.route("/uploaddate/", methods=['PUT'])
+@app.route("/api/uploaddate/", methods=['PUT'])
 def upload_date():
   jsonObject = request.get_json()
 
@@ -92,7 +92,7 @@ def upload_date():
   db.session.commit()
   return "date added"
 
-@app.route('/updatedate/', methods=['PUT'])
+@app.route('/api/updatedate/', methods=['PUT'])
 def update_date():
   print('received update date requets')
   jsonObject = request.get_json()
@@ -106,7 +106,7 @@ def update_date():
   db.session.commit()
   return '', 204
 
-@app.route('/deletedate/', methods=['DELETE']) # what method?
+@app.route('/api/deletedate/', methods=['DELETE']) # what method?
 def delete_date():
   jsonObject = request.get_json()
   id = int(jsonObject)
