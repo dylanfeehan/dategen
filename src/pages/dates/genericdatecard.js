@@ -21,7 +21,8 @@ const GenericDateCard = (props) => {
     console.log('called');
     let dateType = props.dateType
     console.log(dateType)
-    let api_url = `http://127.0.0.1:5000/api/getdates/${dateType}/`
+    //let api_url = `http://127.0.0.1:5000/api/getdates/${dateType}/`
+    let api_url = `http://localhost:3000/api/getdates/${dateType}/`
     console.log(api_url)
     fetch(api_url, {
       method: ['GET'],

@@ -23,6 +23,5 @@ ENV FLASK_APP=api.py
 ENV FLASK_ENV=production
 ENV SQLALCHEMY_DATABASE_URI="sqlite:///data.db"
 
-
 EXPOSE 5000
 CMD ["./boot.sh"]
