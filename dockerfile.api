@@ -23,5 +23,9 @@ ENV FLASK_APP=api.py
 ENV FLASK_ENV=production
 ENV SQLALCHEMY_DATABASE_URI="sqlite:///data.db"
 
+
+# this means that the API will be listening on port 5000 within the docker image.
+# in tandem with docker compose naming this image as "api", we're allowed to reference this server as
+# http://api:5000/
 EXPOSE 5000
 CMD ["./boot.sh"]

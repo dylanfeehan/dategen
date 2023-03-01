@@ -1,3 +1,4 @@
+### STAGE 1 :: BUILD FRONT END
 FROM node:16-alpine as build-step
 WORKDIR /app
 # path /app/node_modules/.bin:$PATH
@@ -11,8 +12,13 @@ COPY ./public ./public
 #yarn 
 RUN yarn install
 RUN yarn build
+# building the static site to serve from the nginx html folder
+
+### STAGE 2 :: start reverse proxy server!
 
 # build step 2 is the nginx proxy
 FROM nginx:stable-alpine
+# static site
 COPY --from=build-step /app/build /usr/share/nginx/html
+# nginx config
 COPY deployment/nginx.default.conf /etc/nginx/conf.d/default.conf

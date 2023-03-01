@@ -12,4 +12,8 @@ services:
       dockerfile: Dockerfile.client
     image: react-flask-app-client
     ports:
+      # within the container, the nginx server will listen on port 80. 
+      # but from the outside, it's running on port 3000.
       - "3000:80"
+      # if we want to interact with the postgres server, which is internally , within the 
+      # container running on port 80, we can access it on port 3000 from the host...

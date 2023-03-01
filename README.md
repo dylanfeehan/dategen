@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# dateGen 
+## Welcome to Dategen!
+This work-in-progress is my attempt to create a couples/dating focused social media. I am currently in the deployment phase. I have containerized the front-end and the API, and the next steps are to deploy the containers on some cloud service, possibly EC2.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Next Steps in Development
+After deploying the current application to the cloud, an overhaul of functionality is in order. I plan to add user accounts, followship, and feeds.
+  
+ <br> 
+ <br> 
 
-## Available Scripts
+# Technical Details
+### This will serve as documentation, mostly for the containerization process of the app, and how everything comes together.
 
-In the project directory, you can run:
+<br>
 
-### `npm start`
+## Nginx  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Since we are serving the static site and serving web requests from the same IP, it is good proxy to have a reverse proxy sit in front of these services and forward all requests from the browser to the correct process.  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br>
 
-### `npm test`
+### There are two main pieces to the NGINX puzzle: `dockerfile.client`, and `nginx.default.conf`  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `dockerfile.client`
+- this is where the nginx servers are spun up. this dockerfile is a multi-stage build, starting with the compilation of the static react app using yarn, followed by the creation of an nginx server. 
+- After copying over the source code, `yarn install` installs the dependencies, and `yarn build` compiles the react app
+- We use the default nginx image for our nginx server. This comes from `FROM nginx:stable-alpine`
+- There are only two steps here, the copying over of the static site files, and the copying over of the configuration file
 
-### `npm run build`
+### `nginx.default.conf`
+- TODO: describe uhhh what the conf file does
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## The Networking System - What's Running Where
+- TODO : talk about whats running where

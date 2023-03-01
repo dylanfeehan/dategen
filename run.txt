@@ -1,2 +1,5 @@
 sudo docker build -f dockerfile -t react-flask-app-api
 sudo docker run --rm -p 5000:5000 react-flask-app-api
+
+every once and a while you may need to run: 
+sudo docker builder prune --all 

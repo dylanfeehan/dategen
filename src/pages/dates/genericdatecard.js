@@ -20,10 +20,11 @@ const GenericDateCard = (props) => {
   useEffect(() => {
     console.log('called');
     let dateType = props.dateType
-    console.log(dateType)
-    //let api_url = `http://127.0.0.1:5000/api/getdates/${dateType}/`
+    //const datesObject = APIService.GetDates(dateType);
+    //setDates(datesObject);
     let api_url = `http://localhost:3000/api/getdates/${dateType}/`
-    console.log(api_url)
+    setDates(APIService.GetDates(dateType));
+    /*
     fetch(api_url, {
       method: ['GET'],
       headers: {
@@ -31,7 +32,8 @@ const GenericDateCard = (props) => {
       },
     })
       .then(resp => resp.json())
-      .then(data => setDates(data))
+      .then(data => setDates(data));
+      */
   }, []);
 
   const arr = dates.filter((date) => date != null);
