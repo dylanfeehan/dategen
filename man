@@ -1,0 +1,17 @@
+REVERSE PROXY
+    build name proxy-server
+    image name proxy
+    sudo docker run -it --rm -d -p 8080:80 --network flask-react-app --name proxy proxy-server 
+
+APACHE FILE SERVER  
+    build name file-server
+    image name apache
+    sudo docker run -dit -p 3000:80 --network flask-react-app --name apache file-server
+    
+API
+    build name api-server
+    image name api
+    sudo docker run -it --rm -d -p 5000:5000 --network flask-react-app --name api api-server
+
+NETWORK 
+    flask-react-app

@@ -2,7 +2,7 @@
 export default class APIService {
 
   static UpdateDate(dateSpecs) {
-    return fetch('http://localhost:3000/api/updatedate/', {
+    return fetch('/api/updatedate/', {
       method: 'PUT',
       headers: {
         'Content-Type': "application/json",
@@ -13,7 +13,7 @@ export default class APIService {
   }
 
   static DeleteDate(id) {
-    return fetch('http://localhost:3000/api/deletedate/', {
+    return fetch('/api/deletedate/', {
       method: 'DELETE',
       headers: {
         'Content-Type': "application/json"
@@ -24,7 +24,7 @@ export default class APIService {
     
   }
   static GetDates(dateType) {
-    const api_url = `http://localhost:3000/api/getdates/${dateType}/`;
+    const api_url = `/api/getdates/${dateType}/`;
     return fetch(api_url, {
       method: ['GET'],
       headers: {
@@ -35,7 +35,7 @@ export default class APIService {
   }
 
   static UploadDate(dateSpecs) {
-    const result = fetch('http://localhost:3000/api/uploaddate/', {
+    const result = fetch('/api/uploaddate/', {
       'method': 'POST',
       headers: {
         'Content-Type': 'application/json'
