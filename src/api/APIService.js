@@ -2,10 +2,6 @@
 export default class APIService {
 
   static UpdateDate(dateSpecs) {
-    //console.log("from within update date");
-    //console.log(dateSpecs);
-    //return null;
-    //return fetch('http://127.0.0.1:5000/api/updatedate/', {
     return fetch('http://localhost:3000/api/updatedate/', {
       method: 'PUT',
       headers: {
@@ -17,9 +13,6 @@ export default class APIService {
   }
 
   static DeleteDate(id) {
-    //return fetch('http://127.0.0.1:5000/api/deletedate/', {
-    // might need to add environment variables in here for debugging lol
-    // resolves to nginx, which routes to api/5000 !
     return fetch('http://localhost:3000/api/deletedate/', {
       method: 'DELETE',
       headers: {
@@ -42,9 +35,8 @@ export default class APIService {
   }
 
   static UploadDate(dateSpecs) {
-    //return fetch('http://127.0.0.1:5000http://localhost:3000/api/uploaddate/', {
     const result = fetch('http://localhost:3000/api/uploaddate/', {
-      'method': 'PUT',
+      'method': 'POST',
       headers: {
         'Content-Type': 'application/json'
       },

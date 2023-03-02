@@ -81,7 +81,7 @@ def put_date():
   return 'placed date, find it in /debug/getdates/'
 
 # upload new
-@app.route("/api/uploaddate/", methods=['PUT'])
+@app.route("/api/uploaddate/", methods=['POST'])
 def upload_date():
   jsonObject = request.get_json()
 
