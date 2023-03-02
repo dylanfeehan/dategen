@@ -22,8 +22,7 @@ const UploadSuccess = () => {
         </Link>
       </div>
     </div>
-
-  )
+  );
 }
 
 export default UploadSuccess;

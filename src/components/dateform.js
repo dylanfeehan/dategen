@@ -26,15 +26,6 @@ const DateForm = (props) => {
 
     const handleSubmit = () => {
         props.handleSubmit(formData)
-        
-        /*
-        navigate('/uploadSuccess', {
-            state: {
-                action: props.action,
-                data: formData,
-            }
-        });
-        */
     }
 
     return (

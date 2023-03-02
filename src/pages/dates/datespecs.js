@@ -45,13 +45,6 @@ const DateSpecs = () => {
       </Accordion.Item>
     </Accordion>
     </div>
-    /*<div>
-    <h2>{data.text}</h2>
-    <br></br>
-    <h4>reservations: {data.reservations}</h4>
-    <h4>notes: {data.notes}</h4>
-    </div>
-    */
   );
 }
 export default DateSpecs;

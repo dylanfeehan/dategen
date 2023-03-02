@@ -20,20 +20,8 @@ const GenericDateCard = (props) => {
   useEffect(() => {
     console.log('called');
     let dateType = props.dateType
-    //const datesObject = APIService.GetDates(dateType);
-    //setDates(datesObject);
     let api_url = `http://localhost:3000/api/getdates/${dateType}/`
     setDates(APIService.GetDates(dateType));
-    /*
-    fetch(api_url, {
-      method: ['GET'],
-      headers: {
-        'Content-Type': 'application/JSON',
-      },
-    })
-      .then(resp => resp.json())
-      .then(data => setDates(data));
-      */
   }, []);
 
   const arr = dates.filter((date) => date != null);
@@ -45,19 +33,14 @@ const GenericDateCard = (props) => {
   const handleClose = () => setShowConfirmation(false);
 
   function handleDelete(cardObj) {
-    // make API call to ... delete the data!
-
     // what to send in
     const response = APIService.DeleteDate(cardObj.id);
     console.log("called delete, heres obj id");
     console.log(cardObj.id);
 
-    //
-
     setShowConfirmation(false);
     navigate("/deleteSuccess");
   };
-
 
   return (
     <div>
@@ -113,58 +96,3 @@ const GenericDateCard = (props) => {
 };
 
 export default GenericDateCard;
-
-/*
-class GenericDateCard extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      dates: []
-    };
-  }
-
-  componentDidMount() {
-    console.log("called")
-    let dateType = this.props.dateType
-    let api_url = 'http://127.0.0.1:5000/getdates/' + dateType + '/'
-    fetch(api_url, {
-      //fetch('http://127.0.0.1:5000/getdates/', {
-      'methods': 'GET',
-      headers: {
-        'Content-Type': 'application/JSON'
-      }
-    })
-      .then(resp => resp.json())
-      .then(data =>
-        this.setState({ dates: data }));
-  };
-
-  render() {
-    const { dateType } = this.props.dateType;
-    let data = this.state['dates']
-    let arr = []
-    for (let i = 0; i < data.length; i++) {
-      if (data[i] != null) {
-        arr.push(data[i])
-      }
-    };
-
-    return (
-      <div>
-        {arr.map((cardObj, index) => (
-          <Card style={{ width: '18rem' }} key={index} className="mx-auto datecard">
-            <Card.Body>
-              <Card.Title>{cardObj.title}</Card.Title>
-              <Card.Text>{cardObj.details}</Card.Text>
-              <Link to="/dates/datespecs" state={{ data: cardObj }}>
-                <Button variant="dark">View Details</Button>
-              </Link>
-            </Card.Body>
-          </Card>
-        ))}
-      </div>
-    );
-  }
-}
-export default GenericDateCard;
-*/

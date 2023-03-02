@@ -1,8 +1,5 @@
-// todo: look into navbar ... how it works... so you can convert to bootstrap
 import React from 'react';
 import './App.css';
-
-// navbar shit
 import MyNavbar from './components/Navbar/index.js';
 import { HashRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages';
@@ -50,24 +47,3 @@ function App() {
 };
 
 export default App;
-
-    /*
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="Website-logo" alt="dateGen logo" />
-        <p>
-          build your own date :)
-        </p>
-        <a
-          className="App-link"
-          href=""
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Get Started
-        </a>
-      </header>
-    </div>
-  );
-}
-*/
