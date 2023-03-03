@@ -14,3 +14,7 @@ RUN yarn build
 
 FROM httpd:2.4
 COPY --from=build-step /app/build/ /usr/local/apache2/htdocs
+EXPOSE 3000
+#RUN echo 'Header always set Access-Control-Allow-Origin "*"' >> /usr/local/apache2/conf/httpd.conf \
+    #&& echo 'Header always set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"' >> /usr/local/apache2/conf/httpd.conf \
+    #&& echo 'Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"' >> /usr/local/apache2/conf/httpd.conf
