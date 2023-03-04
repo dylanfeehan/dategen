@@ -1,20 +1,16 @@
 FROM node:16-alpine as build-step
-WORKDIR /app
 
+WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 COPY package.json yarn.lock ./
-
 COPY ./src ./src
 COPY ./public ./public
-
 RUN yarn install 
 RUN yarn build
 
-
 FROM httpd:2.4
+
+# copy the static site into the apache htdocs
 COPY --from=build-step /app/build/ /usr/local/apache2/htdocs
 EXPOSE 3000
-#RUN echo 'Header always set Access-Control-Allow-Origin "*"' >> /usr/local/apache2/conf/httpd.conf \
-    #&& echo 'Header always set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"' >> /usr/local/apache2/conf/httpd.conf \
-    #&& echo 'Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"' >> /usr/local/apache2/conf/httpd.conf
