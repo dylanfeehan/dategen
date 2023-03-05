@@ -23,7 +23,7 @@ const popover = (
     <Popover.Body style={{
       textAlign: 'center'
     }}
-      as="p">Do you really think I implemented sign up functionality? You're the only person using this lol. {isChecked ? "btw, thanks for checking the cuddle box" : "BTW, you didn't think i'd notice that you didn't check the cuddle box? you're so cruel lol"}</Popover.Body>
+      as="p">Sign up / sign in functionality coming soon. {isChecked ? "why'd you check the terms of service box there's no terms of service lol" : "Good job not clicking the terms of service box ;)"}</Popover.Body>
     <div className="special-link-container">
     <Link to="/">
       <Button variant="outline-dark">Back to Home</Button>
@@ -37,11 +37,11 @@ const popover = (
     <Form>
       <Form.Group className="form-group-with-margin">
         <Form.Label>Full Name</Form.Label>
-        <Form.Control type="text" placeholder="Jen Something" />
+        <Form.Control type="text" placeholder="John Doe" />
       </Form.Group>
       <Form.Group className="form-group-with-margin">
         <Form.Label>Email Address</Form.Label>
-        <Form.Control type="email" placeholder="Enter Email" />
+        <Form.Control type="email" placeholder="dohndoe@example.com" />
       </Form.Group>
       <Form.Group className="mb-3 form-group-with-margin" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
@@ -49,7 +49,7 @@ const popover = (
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Check
-          type="checkbox" id="main-checkbox" label="Cuddles Later" checked={isChecked}
+          type="checkbox" id="main-checkbox" label="Agree to terms of service" checked={isChecked}
           onChange={handleCheckboxChange}
         />
       </Form.Group>

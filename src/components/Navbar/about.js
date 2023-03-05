@@ -4,16 +4,19 @@ const About = () => {
   return (
     <div>
       <h1 className="message">
-        I built dateGen (Date Jen lol) so you can plan our date!
+        I'm building dateGen to learn about full-stack web development!
         <br></br>
         <br></br>
-        This helped me learn a lot and it was a joy to build.
+        This app has been a joy to build thus far and I've learned so much. (React, bootstrap, flask & REST, SQL, docker, deploying to AWS)
         <br></br>
         <br></br>
-        The <code>source code</code> can be found by clicking <a href="https://github.com/dylanfeehan/dategen" this link>this link.</a>
+        Over the next few weeks, I'll be using this app to learn about secure sign on / account creation, as well as how to maintain a persistent database in the cloud.
         <br></br>
         <br></br>
-        I hope we have fun tonight :)
+        The <code>source code</code> can be found by clicking <a href="https://github.com/dylanfeehan/dategen">this link.</a>
+        <br></br>
+        <br></br>
+        it's a work in progress and is currently being refactored into a social media :)
       </h1>
     </div>
   );
