@@ -1,5 +1,8 @@
 #!/bin/sh
 ls -a
-. ./venv/bin/activate
+
+# remove this comment if things don't workout without the venv
+#. ./venv/bin/activate
+
 #flask initdb # for fresh start
 exec gunicorn -b 0.0.0.0:5000 api:app
