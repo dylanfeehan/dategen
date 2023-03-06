@@ -119,6 +119,10 @@ def delete_date():
   db.session.commit()
   return "", 204
 
+@app.route('/health')
+def health_check():
+  return '', 200
+
 
 @app.cli.command('initdb')
 def deploy():

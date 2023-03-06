@@ -13,4 +13,5 @@ FROM httpd:2.4
 
 # copy the static site into the apache htdocs
 COPY --from=build-step /app/build/ /usr/local/apache2/htdocs
+
 EXPOSE 3000

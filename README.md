@@ -3,7 +3,7 @@
 This work-in-progress is my attempt to create a couples/dating focused social media. I am currently in the deployment phase. I have containerized the front-end and the API, and the next steps are to deploy the containers on some cloud service, possibly EC2.
 
 ## Next Steps in Development
-After deploying the current application to the cloud, an overhaul of functionality is in order. I plan to add user accounts, followship, and feeds.
+After deploying the current application to the cloud, I'll be adding account creation, user followship, and post/feed functionality. Effectively turning this into a social media.
   
  <br> 
  <br> 
