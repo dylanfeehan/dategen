@@ -3,7 +3,18 @@
 This work-in-progress is my attempt to create a couples/dating focused social media. I am currently in the deployment phase of the inital application (which is very barebones). I have containerized the front-end and the API, and the next steps are to deploy the containers on GCP with docker and kubernetes, specifically GKE
 
 ## Next Steps in Development
-Deployment is currently in progress. I'm working on deploying to GKE (google kubernetes cluster), it's already containerized for the most part. After deploying the current application to the cloud, I'm going to add account creation, user followship, and post/feed functionality. Effectively turning this into a social media.
+Deployment is currently in progress. I'm working on deploying to GKE (google kubernetes cluster), it's already containerized for the most part. After deploying the current application to the cloud, I'm going to add account creation, user followship, and post/feed functionality. Effectively turning this into a social media.  
+
+## Deployment
+This is my first time deploying an application professionally, and it's been
+a huge learning experience. I've considered AWS ECS, AWS amplify, heroku, local
+hosting, AWS elastic beanstalk, AWS lightsail, AWS lambda, and GKE (google
+kubernetes engine). I've settled on google cloud run. this is because i wanted
+a containerized deployment environment, and i wanted to get experience learning
+about a deployment environmet (amplify is too.. managed), but i figured GKE was
+overkill for now. i messed around with AWS ECS for a few days and was overall
+unimpressed with the platform, which is why i've switched to google. Cloud run
+deployment is currently underway and should be finished by mid march '23
   
  <br> 
  <br> 
