@@ -17,7 +17,15 @@ API
     build name api-server
     image name api
     # optional: -d for detach
+    # sqlite
     sudo docker run -it --rm -p 5000:5000 --network react-flask-app --name api api-server
+    # postgresql
+    -v
+    # mount the token to the container
+"$HOME/.config/gcloud/application_default_credentials.json":/gcp/creds.json:ro
+--env GOOGLE_APPLICATION_CREDENTIALS=/gcp/creds.json
+
+
 
 NETWORK 
     react-flask-app

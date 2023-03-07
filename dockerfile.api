@@ -1,19 +1,30 @@
 FROM python:3.8
 
 WORKDIR /app
-COPY ./backend/api.py /app/api.py
+# sqlite
+#COPY ./backend/api.py /app/api.py
+# postgres
+COPY ./backend/storage.py /app/storage.py
 COPY ./boot.sh /app/boot.sh
 COPY ./requirements.txt /app/requirements.txt
+COPY ./config.ini /app/config.ini
 
 # TO ACCESS DEV DATA
-COPY ./backend/instance/data.db /app/instance/data.db
+# sqlite
+# COPY ./backend/instance/data.db /app/instance/data.db
 #COPY ./backend/venv /app/venv
 RUN pip install -r ./requirements.txt
 
 # env variables
-ENV FLASK_APP=api.py
+# sqlite
+# ENF FLASK_APP=api.py
+# postgres
+ENV FLASK_APP=storage.py
 ENV FLASK_ENV=production
-ENV SQLALCHEMY_DATABASE_URI="sqlite:///data.db"
+# sqlite
+#ENV SQLALCHEMY_DATABASE_URI="sqlite:///data.db"
+# postgresql
+ENV SQLALCHEMY_DATABASE_URI="postgresql+pg8000://"
 
 EXPOSE 5000
 CMD ["./boot.sh"]

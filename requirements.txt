@@ -11,3 +11,5 @@ configparser==5.3.0
 gevent==22.10.2
 psycopg2-binary==2.9.5
 pg8000==1.29.4
+google-auth==2.16.2
+cloud-sql-python-connector==1.2.0
