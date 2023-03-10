@@ -10,48 +10,14 @@ import sqlalchemy
 import pg8000
 import os
 
-# multiplex this so that we're using sqlite when developing haha
-
-
-def read_config():
-    '''
-    instantiating a config file reader for our use case. to be used to read credentials for connecting to PSQL
-    DB hosted in GCP SQL
-    :return: ConfigParser
-    '''
-    # get the file path of our config file
-    current_dir = os.path.dirname(__file__)
-    file_path = os.path.join(current_dir, 'config.ini')
-
-    # initalize the config object
-    config = ConfigParser()
-    config.read(file_path)
-    print(config)
-    return config
-
-
-def getconn():
-    config = read_config()
-    with Connector() as connector:
-        conn = connector.connect(
-            config['dg-psql-db']['instance-name'],
-            "pg8000",
-            user=config['dg-psql-db']['user'],
-            password=config['dg-psql-db']['password'],
-            db=config['dg-psql-db']['dbname'],
-            ip_type=IPTypes.PUBLIC
-        )
-        return conn
+from configmodule import DevelopmentConfig
+# from configmodule import ProductionConfig
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql+pg8000://"
-# this won't happen in development!
-app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-    "creator": getconn
-}
-CORS(app)
+app.config.from_object(DevelopmentConfig())
 
+CORS(app)
 
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
