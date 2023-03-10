@@ -2,17 +2,17 @@ FROM node:16-alpine as build-step
 
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
-# TRY ME OUT IN PRODUCTION
 
+# screw yarn lol
 #COPY package.json yarn.lock ./
 COPY package.json ./
 COPY ./src ./src
 COPY ./public ./public
 
 # watch out..
-# local npm start and flask server
+# for local npm start and flask server
 COPY ./.env.development.local ./.env 
-# local docker
+# for local docker
 #COPY ./.env.development.docker ./.env
 # production
 #COPY ./.env.production  ./.env
