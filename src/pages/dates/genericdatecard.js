@@ -19,13 +19,9 @@ const GenericDateCard = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('called');
     let dateType = props.dateType;
-    //let api_url = `https://api.dategen.fun/getdates/${dateType}/`;
+
     const api_url = url_prefix +`getdates/${dateType}/`;
-    console.log('api url: ');
-    console.log(api_url);
-    //let api_url = `/api/getdates/${dateType}/`
     fetch(api_url, {
       method: 'GET',
       headers: {

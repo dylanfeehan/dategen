@@ -8,12 +8,16 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 COPY ./src ./src
 COPY ./public ./public
-COPY ./.env  ./.env
-#RUN yarn install
-#RUN yarn build
+
+# watch out..
+# local npm start and flask server
+COPY ./.env.development.local ./.env 
+# local docker
+#COPY ./.env.development.docker ./.env
+# production
+#COPY ./.env.production  ./.env
+
 RUN npm install 
-#ARG API_ARG
-#RUN REACT_APP_API_URL_PREFIX=$API_ARG npm run build
 RUN npm run build
 
 FROM httpd:2.4
