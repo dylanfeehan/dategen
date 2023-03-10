@@ -1,0 +1,9 @@
+steps:
+- name: "gcr.io/cloud-builders/docker"
+  args:
+  - build
+  - "--tag=gcr.io/dategen/public_fileserver"
+  - "--file=./dockerfile.fs_gcp"
+  - .
+images:
+- "gcr.io/dategen/public_fileserver"

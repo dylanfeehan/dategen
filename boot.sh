@@ -6,4 +6,4 @@ ls -a
 
 #flask initdb # for fresh start
 # exec gunicorn -b local:5000 file:module
-exec gunicorn -b 0.0.0.0:5000 storage:app
+exec gunicorn -b 0.0.0.0:8080 storage:app

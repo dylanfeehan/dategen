@@ -15,16 +15,15 @@ COPY ./config.ini /app/config.ini
 #COPY ./backend/venv /app/venv
 RUN pip install -r ./requirements.txt
 
-# env variables
 # sqlite
-# ENF FLASK_APP=api.py
+# ENV FLASK_APP=api.py
+# ENV SQLALCHEMY_DATABASE_URI="sqlite:///data.db"
+
 # postgres
 ENV FLASK_APP=storage.py
 ENV FLASK_ENV=production
-# sqlite
-#ENV SQLALCHEMY_DATABASE_URI="sqlite:///data.db"
-# postgresql
 ENV SQLALCHEMY_DATABASE_URI="postgresql+pg8000://"
 
-EXPOSE 5000
+# make 8080 in deployment
+#EXPOSE 5000
 CMD ["./boot.sh"]

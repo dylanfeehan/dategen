@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react'
 import { ThreeDotsVertical } from 'react-bootstrap-icons'
 import APIService from '../../api/APIService';
+const url_prefix = process.env.REACT_APP_API_URL_PREFIX;
 
 const GenericDateCard = (props) => {
   const [dates, setDates] = useState([]);
@@ -19,21 +20,19 @@ const GenericDateCard = (props) => {
 
   useEffect(() => {
     console.log('called');
-    let dateType = props.dateType
-    let api_url = `/api/getdates/${dateType}/`
+    let dateType = props.dateType;
+    //let api_url = `https://api.dategen.fun/getdates/${dateType}/`;
+    const api_url = url_prefix +`getdates/${dateType}/`;
+    console.log('api url: ');
+    console.log(api_url);
+    //let api_url = `/api/getdates/${dateType}/`
     fetch(api_url, {
       method: 'GET',
       headers: {
         'Content-Type': "application/json"
       },
     }).then(resp => resp.json())
-    .then(data => setDates(data))
-    
-
-    //const result = APIService.GetDates(dateType);
-    //console.log(result);
-    //setDates(result);
-    //setDates(APIService.GetDates(dateType));
+    .then(data => setDates(data));
   }, []);
 
   const arr = dates.filter((date) => date != null);

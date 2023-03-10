@@ -2,16 +2,20 @@ FROM node:16-alpine as build-step
 
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
+# TRY ME OUT IN PRODUCTION
 
-COPY package.json yarn.lock ./
+#COPY package.json yarn.lock ./
+COPY package.json ./
 COPY ./src ./src
 COPY ./public ./public
-RUN yarn install 
-RUN yarn build
+COPY ./.env  ./.env
+#RUN yarn install
+#RUN yarn build
+RUN npm install 
+#ARG API_ARG
+#RUN REACT_APP_API_URL_PREFIX=$API_ARG npm run build
+RUN npm run build
 
 FROM httpd:2.4
-
 # copy the static site into the apache htdocs
 COPY --from=build-step /app/build/ /usr/local/apache2/htdocs
-
-EXPOSE 3000
