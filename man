@@ -23,8 +23,6 @@ API
     # mount the token to the container
     -v "$HOME/.config/gcloud/application_default_credentials.json":/gcp/creds.json:ro --env GOOGLE_APPLICATION_CREDENTIALS=/gcp/creds.json
 
-
-
 NETWORK 
     react-flask-app
 
