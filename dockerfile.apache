@@ -10,11 +10,11 @@ COPY ./src ./src
 COPY ./public ./public
 
 # watch out..
-# for local npm start and flask server
+# make requests to localhost:5000
 COPY ./.env.development.local ./.env 
-# for local docker
+# make requests to http://api:8080/ docker container
 #COPY ./.env.development.docker ./.env
-# production
+# make requests to api.dategen.fun
 #COPY ./.env.production  ./.env
 
 RUN npm install 

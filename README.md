@@ -1,46 +1,24 @@
-# dateGen 
-## Welcome to Dategen!
-This work-in-progress is my attempt to create a couples/dating focused social media. I am currently in the deployment phase of the inital application (which is very barebones). I have containerized the front-end and the API, and the next steps are to deploy the containers on GCP with docker and kubernetes, specifically GKE
+# Welcome to Dategen!
+## This work-in-progress is my attempt to create a couples/dating focused social media :)
+
+<br>
 
 ## Next Steps in Development
-Deployment is currently in progress. I'm working on deploying to GKE (google kubernetes cluster), it's already containerized for the most part. After deploying the current application to the cloud, I'm going to add account creation, user followship, and post/feed functionality. Effectively turning this into a social media.  
+ - ### Phase 1 of this project was to create the front end. Phase 2 was to add a database so users could add and edit data. Pase 3 was to deploy the site. All of these phases are completed, and I'm currently working on Phase 4, which is to add user accounts. This will enable users to create accounts, upload posts, and view their posts. After deploying Phase 4, Phase 5 will be to add user followship and feeds. After deploying Phase 5, Phase 6 will be a complete redesign of the front end (it's really ugly because i have no eye for design)
 
 ## Deployment
-This is my first time deploying an application professionally, and it's been
-a huge learning experience. I've considered AWS ECS, AWS amplify, heroku, local
-hosting, AWS elastic beanstalk, AWS lightsail, AWS lambda, and GKE (google
-kubernetes engine). I've settled on google cloud run. this is because i wanted
-a containerized deployment environment, and i wanted to get experience learning
-about a deployment environmet (amplify is too.. managed), but i figured GKE was
-overkill for now. i messed around with AWS ECS for a few days and was overall
-unimpressed with the platform, which is why i've switched to google. Cloud run
-deployment is currently underway and should be finished by mid march '23
-  
+ - ### This app is currently deployed on GCP Cloud Run, a serverless compute platform that enables users to run containers on googles scalable infrastructure.
  <br> 
  <br> 
 
 # Technical Details
-### This will serve as documentation, mostly for the containerization process of the app, and how everything comes together.
 
-<br>
+## Environments
+### There are several configurations on how I run this app and they each have a purpose. 
+- For **fast paced development**, the react app is served by the WebpackDevServer started by `npm start`. The api runs on http:localhost:5000 and is started with `flask --app storage.py run`. This configuration saves time as I don't need to rebuild containers between changes. The react app knows to make requests to localhost:5000 because of the .env file which specifies `REACT_APP_API_URL_PREFIX`, a custom environment variable.
+- For testing **before deployment**, the react app and the API are containerized, and accessed via a reverse proxy. Running `COPY ./.env.development.docker ./.env` tells the react app to prefix requests to the api with `/api/`. Since this doesn't start with protocol, `fetch` will append this request URL to the URL that the front-end was retrieved from, so it will be passed to the proxy server. The proxy server will then match the `/api/` and proxy to http://api:8080/. `api` in http://api:8080 is the name of the container running the api, and 8080 is the port that the api is running on (cloud run's defualt, so kept it same for development). We're able to refer to the api by 'api' because the running containers are all connected by a bridge network, which means their names will resolve to their ips.
+- For **production deployment**, we will run `COPY ./.env.production ./.env` in dockerfile.apache. This tells the react app to prefix api requests with 'https://api.dategen.fun/', which is the public IP of the API.
 
-## Nginx  
-
-### Since we are serving the static site and serving web requests from the same IP, it is good practice to have a reverse proxy sit in front of these services and forward all requests from the browser to the correct process. I may end up switchingt to using a load balancer when it comes time to deploy but this is fine for developemnt 
-
-<br>
-
-### There are two main pieces to the NGINX puzzle: `dockerfile.client`, and `nginx.default.conf`  
-
-### `dockerfile.proxy`
-- this is where the nginx servers are spun up. this dockerfile is a multi-stage build, starting with the compilation of the static react app using yarn, followed by the creation of an nginx server. 
-- After copying over the source code, `yarn install` installs the dependencies, and `yarn build` compiles the react app
-- We use the default nginx image for our nginx server. This comes from `FROM nginx:stable-alpine`
-- There are only two steps here, the copying over of the static site files, and the copying over of the configuration file
-
-### `nginx.default.conf`
-- simply passes requests to '/' to the file server, apache, which just serves the static site
-- passes any request that prefix matches with /api to the api container
-- note that i can reference the containers by name because they're connected with a bridge network
-
-### this is all probably going to change when I deploy, since I won't be able to rely on inter-container communication. Like i said, i'll proably switch to a load balancer
+### API environments
+- I'm using an sqlite database for development and a GCP Postgresql instance for deployment. So, I'm using environment variables to inform my API on which database to connect to. Sometimes I want to connect to postgresql while developing, for example if I want to test something before deploying. This is all done through `configmodule.py`, which sets different configs of the app environment variables. In production, `SQLALCHEMY_DATABASE_URI` is set to `postgresql+pg8000://`, but in development it is `sqlite:///data.db`. Also, in production, the "creator" key in the SQLALCHEMY_ENGINE_OPTIONS is set to `getconn`, a function which returns a connector to the GCP Postgresql instance. 
+- `from configmodule import (Development|Production)Config` loads in the particular class which is used to initialize the app.config, and we do so with `app.config.from_object((Development|Production)Config())`. Development|Production implies that we're either going to import and call with Development or Production, and this will cause the app to connect to the development or production database. So, clearly, this decision is made in the source code, which is not at all optimal, but it will work for now.
