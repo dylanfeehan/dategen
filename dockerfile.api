@@ -1,29 +1,21 @@
 FROM python:3.8
 
 WORKDIR /app
-# sqlite
-#COPY ./backend/api.py /app/api.py
 
-# postgres
 COPY ./backend/storage.py /app/storage.py
+COPY ./backend/configmodule.py /app/configmodule.py
+COPY ./backend/config.ini /app/config.ini
+
 COPY ./boot.sh /app/boot.sh
 COPY ./requirements.txt /app/requirements.txt
-COPY ./config.ini /app/config.ini
 RUN pip install -r ./requirements.txt
 
-# uhh shouldn't have to multiplex the sqlite after i do the env variables
-# TO ACCESS DEV DATA
-# sqlite
-# COPY ./backend/instance/data.db /app/instance/data.db
+COPY ./backend/instance/data.db /app/instance/data.db
 
-# sqlite env varaibles (? this true after env variable stuff ?)
-# ENV FLASK_APP=api.py
-# this will be lol
-# ENV SQLALCHEMY_DATABASE_URI="sqlite:///data.db"
-
-# postgres
 ENV FLASK_APP=storage.py
-ENV FLASK_ENV=production
-ENV SQLALCHEMY_DATABASE_URI="postgresql+pg8000://"
 
-CMD ["./boot.sh"]
+# this should be all we have to change when making a production image!
+#ENV FLASK_ENV=production
+ENV FLASK_ENV=development
+
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "storage:app"]
