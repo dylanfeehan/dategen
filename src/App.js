@@ -17,10 +17,13 @@ import DateSpecs from './pages/dates/datespecs';
 import logo from './dateGen.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BottomSlides from './components/BottomSlide/index.js';
+import {initializeApp} from 'firebase/app';
+import { firebaseConfig } from './assets/firebaseConfig';
+
 
 function App() {
+    const app = initializeApp(firebaseConfig);
   return (
-
   <div className="homepage">
     <Router> 
     <MyNavbar className="my-navbar"/>
