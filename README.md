@@ -7,7 +7,7 @@
  - ### Phase 1 of this project was to create the front end. Phase 2 was to add a database so users could add and edit data. Pase 3 was to deploy the site. All of these phases are completed, and I'm currently working on Phase 4, which is to add user accounts. This will enable users to create accounts, upload posts, and view their posts. After deploying Phase 4, Phase 5 will be to add user followship and feeds. After deploying Phase 5, Phase 6 will be a complete redesign of the front end (it's really ugly because i have no eye for design)
 
 ## Deployment
- - ### This app is currently deployed on GCP Cloud Run, a serverless compute platform that enables users to run containers on googles scalable infrastructure.
+ - ### This app is currently deployed on GCP Cloud Run, a serverless compute platform that enables users to run containers on Google's scalable infrastructure.
  <br> 
  <br> 
 
