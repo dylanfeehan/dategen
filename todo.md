@@ -1,4 +1,5 @@
 # Todos
+## - Read about Auth object, and app object, and the initialization process. First in the video linked in the source, then in the docs (read about the auth object, the objects returned by all initializers, and the params of all initializers)
 ## - Look into linking multiple accounts / linking email account to google account etc. 
 ## - Add sign in with google to the firebaseui sign up
 ## - Explore more firebaseui stuff here: https://firebaseopensource.com/projects/firebase/firebaseui-web/
