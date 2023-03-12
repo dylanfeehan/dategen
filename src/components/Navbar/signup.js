@@ -6,7 +6,7 @@ import Popover from 'react-bootstrap/Popover';
 import { Link } from 'react-router-dom';
 import '../../App.css';
 
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 import { firebaseConfig } from '../../assets/firebaseConfig';
 import 'firebaseui/dist/firebaseui.css';
 
@@ -29,26 +29,36 @@ function createUser() {
 
 function loginUser() {
   signInWithEmailAndPassword(auth, "dylanjfeehan@gmail.com", "secret")
-  .then((userCred) => {
-    const user = userCred.user;
-    console.log(user);
-  })
-  .catch((error) => {
-    console.log(error);
-  })
+    .then((userCred) => {
+      const user = userCred.user;
+      console.log(user);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
 }
 
 const SignUp = () => {
   var firebaseui = require('firebaseui');
   useEffect(() => {
+    //https://firebase.google.com/docs/auth/web/start
+    // good docs on how the auth initializaiton stuff works
     const uiConfig = {
-      signInSuccessful: '/',
+      //https://firebase.google.com/docs/auth/web/manage-users
+      // regarding below... 'get currently signed in user'... useful in the future... 
+      // this works with react router... just need to figure out how to keep the auth state... do we pass around??
+      signInFlow: 'popup',
+      signInSuccessUrl: '/',
       signInOptions: [
-        "password"
+        //"password",
+        {
+          provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          requireDisplayName: true
+        }
       ],
     };
     let ui = firebaseui.auth.AuthUI.getInstance();
-    if(!ui) {
+    if (!ui) {
       ui = new firebaseui.auth.AuthUI(auth);
     }
 
