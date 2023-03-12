@@ -1020,6 +1020,7 @@
     "bootstrap": "^5.2.3",
     "dotenv": "^16.0.3",
     "firebase": "^9.17.2",
+    "firebaseui": "^6.0.2",
     "mdb-react-ui-kit": "^5.1.0",
     "nginx": "^1.0.8",
     "react": "^18.2.0",

@@ -22,7 +22,6 @@ import { firebaseConfig } from './assets/firebaseConfig';
 
 
 function App() {
-    const app = initializeApp(firebaseConfig);
   return (
   <div className="homepage">
     <Router> 
