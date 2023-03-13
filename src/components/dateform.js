@@ -31,7 +31,7 @@ const DateForm = (props) => {
     return (
         <div>
             <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3 p-2" controlId="formTitle">
+                <Form.Group className="mb-3 p-2" controlid="formTitle">
                     <Form.Label>Date Title</Form.Label>
                     <Form.Control type="text"
                         name="title"
@@ -42,7 +42,7 @@ const DateForm = (props) => {
 
                 <Form.Group className='p-2'>
                     <Form.Label >Date Type</Form.Label>
-                    <Form.Select controlId="formType" aria-label="Default select example"
+                    <Form.Select controlid="formType" aria-label="Default select example"
                         name='type'
                         value={formData.type}
                         onChange={handleChange}
@@ -56,7 +56,7 @@ const DateForm = (props) => {
                 </Form.Group>
 
 
-                <Form.Group className="mb-3 p-2" controlId="formDetails">
+                <Form.Group className="mb-3 p-2" controlid="formDetails">
                     <Form.Label>Date Details</Form.Label>
                     <Form.Control type="text"
                         name="details"
@@ -65,7 +65,7 @@ const DateForm = (props) => {
                         placeholder="Enjoy a fantastic dinner at Shadyside's premier italian restaurant." />
                 </Form.Group>
 
-                <Form.Group className="mb-3 p-2" controlId="formSite">
+                <Form.Group className="mb-3 p-2" controlid="formSite">
                     <Form.Label>Date Website</Form.Label>
                     <Form.Control type="text"
                         name="site"
@@ -77,7 +77,7 @@ const DateForm = (props) => {
                     </Form.Text>
                 </Form.Group>
 
-                <Form.Group className="mb-3 p-2" controlId="formReservations">
+                <Form.Group className="mb-3 p-2" controlid="formReservations">
                     <Form.Label>Reservations / Prep Info</Form.Label>
                     <Form.Control type="text"
                         name='reservations'
@@ -86,7 +86,7 @@ const DateForm = (props) => {
                         placeholder="No" />
                 </Form.Group>
 
-                <Form.Group className="mb-3 p-2" controlId="formNotes">
+                <Form.Group className="mb-3 p-2" controlid="formNotes">
                     <Form.Label>Notes</Form.Label>
                     <Form.Control type="text"
                         name='notes'
@@ -95,7 +95,7 @@ const DateForm = (props) => {
                         placeholder="park on potter and walk" />
                 </Form.Group>
 
-                <Form.Group className="mb-3 p-2" controlId="formDirections">
+                <Form.Group className="mb-3 p-2" controlid="formDirections">
                     <Form.Label>Directions</Form.Label>
                     <Form.Control type="text"
                         name="directions"
