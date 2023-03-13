@@ -20,7 +20,7 @@ const MyNavbar = () => {
             <Nav.Link as={Link} to="/upload" className="nav-link">Upload</Nav.Link>
 
               <div className="narrow-boy">
-            <NavDropdown title="Other" id="basic-nav-dropdown" align={{lg: 'start', sm: 'start', md:'start', xl:'start' }}>
+            <NavDropdown title="Other" id="basic-nav-dropdown" align={{lg: 'start'}}>
               <NavDropdown.Item as={Link} to="/sign-up">Sign Up</NavDropdown.Item>
               <NavDropdown.Item href="https://github.com/dylanfeehan/dategen" target="_blank"><code>Source</code></NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/admin">Admin</NavDropdown.Item>
