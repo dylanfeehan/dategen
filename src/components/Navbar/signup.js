@@ -50,9 +50,10 @@ const SignUp = () => {
       // regarding below... 'get currently signed in user'... useful in the future... 
       // this works with react router... just need to figure out how to keep the auth state... do we pass around??
       signInFlow: 'popup',
-      signInSuccessUrl: '/',
+      signInSuccessUrl: '/homepage',
       signInOptions: [
         //"password",
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         {
           provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
           requireDisplayName: true
@@ -69,7 +70,10 @@ const SignUp = () => {
   }, []);
 
   return (
-    <div>
+    <div className="centered" style={{
+      paddingTop: '1.5 rem',
+    }}>
+      <h1>Sign In Options</h1>
       <div id="firebaseui-auth-container"></div>
     </div>
   );
