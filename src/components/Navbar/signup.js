@@ -17,6 +17,7 @@ import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } f
 const app = firebase.initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+/*
 function createUser() {
   createUserWithEmailAndPassword(auth, "dylanjfeehan@gmail.com", "secret")
     .then((userCred) => {
@@ -37,6 +38,7 @@ function loginUser() {
       console.log(error);
     })
 }
+*/
 
 const SignUp = () => {
   var firebaseui = require('firebaseui');
@@ -68,9 +70,6 @@ const SignUp = () => {
 
   return (
     <div>
-      <h1>sign up</h1>
-      <Button onClick={createUser}>Create User</Button>
-      <Button onClick={loginUser}>Log In</Button>
       <div id="firebaseui-auth-container"></div>
     </div>
   );
