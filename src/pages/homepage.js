@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import firebase from 'firebase/compat/app';
 import { firebaseConfig } from '../assets/firebaseConfig';
-import {useState} from 'react'
+import { useState } from 'react'
 
 const Homepage = () => {
     const app = firebase.initializeApp(firebaseConfig);
@@ -26,10 +26,10 @@ const Homepage = () => {
             {user ? (
                 <h1>welcome {user.displayName}</h1>
             )
-            :
-            (
-                <h1>fetching your creds...</h1>
-            )
+                :
+                (
+                    <h1>fetching your creds...</h1>
+                )
             }
         </div>
     )

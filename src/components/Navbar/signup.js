@@ -17,28 +17,6 @@ import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } f
 const app = firebase.initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-/*
-function createUser() {
-  createUserWithEmailAndPassword(auth, "dylanjfeehan@gmail.com", "secret")
-    .then((userCred) => {
-      const user = userCred.user;
-      console.log(user);
-    }).catch((error) => {
-      console.log(error);
-    });
-}
-
-function loginUser() {
-  signInWithEmailAndPassword(auth, "dylanjfeehan@gmail.com", "secret")
-    .then((userCred) => {
-      const user = userCred.user;
-      console.log(user);
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-}
-*/
 
 const SignUp = () => {
   var firebaseui = require('firebaseui');
@@ -78,7 +56,5 @@ const SignUp = () => {
     </div>
   );
 }
-
-
 
 export default SignUp;
