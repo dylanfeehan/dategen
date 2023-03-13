@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import MyNavbar from './components/Navbar/index.js';
-import { HashRouter as Router, Routes, Route} from 'react-router-dom';
+//import { HashRouter as Router, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages';
 import About from './components/Navbar/about'
 import Upload from './components/Navbar/upload'
@@ -19,6 +20,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import BottomSlides from './components/BottomSlide/index.js';
 import {initializeApp} from 'firebase/app';
 import { firebaseConfig } from './assets/firebaseConfig';
+import Homepage from './pages/homepage';
 
 
 function App() {
@@ -41,6 +43,7 @@ function App() {
       <Route path='/dates/activities' element={<GenericDateCard dateType={'activity'}/>} />
       <Route path='/dates/fooddrink' element={<GenericDateCard dateType={'fooddrink'}/>} />
       <Route path='/dates/datespecs' element={<DateSpecs /> } />
+      <Route path='/homepage' element={<Homepage />} />
     </Routes>
     </Router>
     <BottomSlides className="styled-slide" />
