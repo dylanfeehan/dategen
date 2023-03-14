@@ -2,6 +2,20 @@ export default class APIService {
 
   static url_prefix = process.env.REACT_APP_API_URL_PREFIX;
 
+  static Verify(token) {
+    const api_url = this.url_prefix + 'verify/'
+    return fetch(api_url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(""),
+    })
+    .then((resp => resp.json()))
+    .catch((error) => console.log(error));
+  }
+
   static UpdateDate(dateSpecs) {
     const api_url = this.url_prefix + 'updatedate/'
     return fetch(api_url, {

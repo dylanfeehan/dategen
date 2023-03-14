@@ -9,6 +9,8 @@ from flask_cors import CORS
 import sqlalchemy
 import pg8000
 import os
+import firebase_admin
+from firebase_admin import credentials, auth
 
 from configmodule import DevelopmentConfig
 # from configmodule import ProductionConfig
@@ -51,6 +53,24 @@ class DatesSchema(ma.Schema):
 
 dateSchema = DatesSchema()
 datesSchema = DatesSchema(many=True)
+
+@app.route('/verify/', methods=['PUT', 'GET'])
+def verify_token():
+    path = '/home/dylan/projects/dategen/backend/dategen-admin.json'
+    cred = credentials.Certificate(path)
+
+    firebase_app = firebase_admin.initialize_app(cred)
+    print(firebase_app.project_id)
+
+    token = request.headers.get('Authorization')
+    print('here is the token:\n::>' + str(token))
+    better_token = (token.split(' '))
+    print('better token: ::>' + better_token[1])
+    verifyResult = auth.verify_id_token(better_token[1])
+
+    print(verifyResult)
+
+    return jsonify({'error': 'i printed it...'})
 
 
 @app.route('/debug/putdate/', methods=['GET'])

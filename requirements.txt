@@ -13,3 +13,4 @@ psycopg2-binary==2.9.5
 pg8000==1.29.4
 google-auth==2.16.2
 cloud-sql-python-connector==1.2.0
+firebase-admin=6.1.0
