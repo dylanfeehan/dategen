@@ -17,10 +17,35 @@ const Homepage = () => {
     function verify(user) {
         console.log('the button was clicked by ' + user.displayName);
         const token = user.getIdToken(false)
+            .then((token) => {
+                console.log('here is token: ' + token);
+                APIService.Verify(token);
+            });
+    }
+    function submitPost(user) {
+        const datespecs = {
+            title: "another one",
+            type: "oneonone",
+            details: "we da best music",
+            site: "verified site",
+            reservations: "d j khaled",
+            notes: "verified notes",
+            directions: "verified directions",
+        }
+        user.getIdToken(false)
         .then((token) => {
-            console.log('here is token: ' + token);
-            APIService.Verify(token);
-        });
+            APIService.SubmitDate(datespecs, token)
+        })
+        .catch((error) => console.log(error))
+        
+    }
+    function getPosts(user) {
+        user.getIdToken(false)
+        .then((token) => {
+            const promise = APIService.GetDatesProtected(token);
+            promise.then((data) => console.log(data))
+        })
+        console.log('getting posts')
     }
 
     auth.onAuthStateChanged((user) => {
@@ -42,6 +67,12 @@ const Homepage = () => {
                     <Button onClick={() => {
                         verify(user);
                     }}>Verify Myself</Button>
+                    <Button onClick={() => {
+                        submitPost(user);
+                    }}>Submit post</Button>
+                    <Button onClick={() => {
+                        getPosts(user);
+                    }}>Get Dates</Button>
                 </div>
             )
                 :

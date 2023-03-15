@@ -11,6 +11,7 @@ import pg8000
 import os
 import firebase_admin
 from firebase_admin import credentials, auth
+import base64
 
 from configmodule import DevelopmentConfig
 # from configmodule import ProductionConfig
@@ -24,6 +25,32 @@ CORS(app)
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
+path = '/home/dylan/projects/dategen/backend/dategen-admin.json'
+cred = credentials.Certificate(path)
+
+firebase_app = firebase_admin.initialize_app(cred)
+
+
+class User(db.Model):
+    id = db.Column(db.String(), primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String())
+    posts = db.relationship("Dates", backref='poster')
+
+    def __init__(self, id, name, email):
+        self.id = id
+        self.name = name
+        self.email = email
+
+
+class UserSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'name', 'email', 'posts')
+
+
+userSchema = UserSchema()
+usersSchema = UserSchema(many=True)
+
 
 class Dates(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -34,8 +61,10 @@ class Dates(db.Model):
     reservations = db.Column(db.Text())
     notes = db.Column(db.Text())
     directions = db.Column(db.Text())
+    poster_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    # poster id
 
-    def __init__(self, title, type, site, details, reservations, notes, directions):
+    def __init__(self, poster_id, title, type, site, details, reservations, notes, directions):
         self.title = title
         self.type = type
         self.site = site
@@ -54,21 +83,56 @@ class DatesSchema(ma.Schema):
 dateSchema = DatesSchema()
 datesSchema = DatesSchema(many=True)
 
+def create_user(usertok):
+    user = User(usertok['user_id'], usertok['name'], usertok['email'])
+    db.session.add(user)
+    db.session.commit()
+
+@app.before_request
+def verify_request():
+    token = request.headers.get('Authorization')
+    print('token: ' + str(token))
+    if (token != None):
+        usertok = auth.verify_id_token(token)
+        user = User.query.get(usertok['user_id'])
+        if(user == None):
+            create_user(usertok)
+        request.usertok = usertok
+
+
+@app.route('/get_dates/', methods=['GET'])
+def get_dates_protected():
+    token = request.usertok
+    user = User.query.get(token['user_id'])
+    dates = user.posts
+    print(dates)
+    return datesSchema.jsonify(dates)
+
+
+@app.route('/upload_date/', methods=['PUT'])
+def upload_date_protected():
+    token = request.usertok
+    date_obj = request.get_json() 
+    date = Dates(token['user_id'], date_obj['title'], date_obj['type'],
+                 date_obj['site'], date_obj['details'],
+                 date_obj['reservations'], date_obj['notes'], date_obj['directions'])
+
+    user = User.query.get(token['user_id'])
+    user.posts.append(date)
+    db.session.add(user)
+    db.session.commit()
+    return '', 200
+
 @app.route('/verify/', methods=['PUT', 'GET'])
 def verify_token():
-    path = '/home/dylan/projects/dategen/backend/dategen-admin.json'
-    cred = credentials.Certificate(path)
+    # user_id = request.user_id
+    # print(user_id)
+    token = request.usertok
+    print(token)
+    print('user: ' + token['name'])
 
-    firebase_app = firebase_admin.initialize_app(cred)
-    print(firebase_app.project_id)
-
-    token = request.headers.get('Authorization')
-    print('here is the token:\n::>' + str(token))
-    better_token = (token.split(' '))
-    print('better token: ::>' + better_token[1])
-    verifyResult = auth.verify_id_token(better_token[1])
-
-    print(verifyResult)
+    user = User.query.get(token['user_id'])
+    print(user.name)
 
     return jsonify({'error': 'i printed it...'})
 
@@ -134,7 +198,7 @@ def get_dates_by_type(dateType):
 def upload_date():
     jsonObject = request.get_json()
 
-    date = Dates(jsonObject['title'], jsonObject['type'],
+    date = Dates('noid', jsonObject['title'], jsonObject['type'],
                  jsonObject['site'], jsonObject['details'],
                  jsonObject['reservations'], jsonObject['notes'], jsonObject['directions'])
 

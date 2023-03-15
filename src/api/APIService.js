@@ -8,12 +8,37 @@ export default class APIService {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        'Authorization': token
       },
       body: JSON.stringify(""),
     })
-    .then((resp => resp.json()))
-    .catch((error) => console.log(error));
+      .then((resp => resp.json()))
+      .catch((error) => console.log(error));
+  }
+
+
+  static GetDatesProtected(token) {
+    const api_url = this.url_prefix + 'get_dates/';
+    return fetch(api_url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': "application/json",
+        'Authorization': token
+      },
+    }).then(resp=> resp.json())
+  }
+
+
+  static SubmitDate(datespecs, token) {
+    const api_url = this.url_prefix + 'upload_date/';
+    return fetch(api_url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      },
+      body: JSON.stringify(datespecs)
+    })
   }
 
   static UpdateDate(dateSpecs) {
