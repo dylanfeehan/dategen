@@ -72,7 +72,6 @@ const GenericDateCard = (props) => {
 
                     <Dropdown.Item onClick={handleDeleteClick}>Delete</Dropdown.Item>
                     <Modal show={showConfirmation} onHide={handleClose}>
-                      {console.log("wtf")}
                       <Modal.Header closeButton>
                         <Modal.Title>Confirm Delete</Modal.Title>
                       </Modal.Header>
