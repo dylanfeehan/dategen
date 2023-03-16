@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap'
 import firebase from 'firebase/compat/app';
 import { firebaseConfig } from '../assets/firebaseConfig';
 import { useState } from 'react'
+import PostSpecs from '../assets/PostSpecs';
 
 const Homepage = () => {
     // reinitialize the firebase app for this page
@@ -15,18 +16,17 @@ const Homepage = () => {
     const [user, setUser] = useState(null);
 
     function submitPost(user) {
-        const datespecs = {
-            title: "another one",
-            type: "oneonone",
-            details: "we da best music",
-            site: "verified site",
-            reservations: "d j khaled",
-            notes: "verified notes",
-            directions: "verified directions",
-        }
+
+        const postSpecs = new PostSpecs('nice abstraction', 
+            'oneonone', 
+            'haha this is cool', 
+            'probably doesnt work yet', 
+            'notes on this boy', 
+            'website yo', 
+            'my house');
         user.getIdToken(false)
             .then((token) => {
-                APIService.SubmitDate(datespecs, token)
+                APIService.SubmitDate(postSpecs, token)
             })
             .catch((error) => console.log(error))
 
