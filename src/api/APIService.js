@@ -6,22 +6,28 @@ export default class APIService {
   /**
    * 
    * @param {JWT} token for verification
-   * @param {Date} params to send to server
-   * @returns 
+   * @param {PostSpecs} postSpecs instance to send to server
+   * @returns result from the api as a JSON object, or a list of them
    */
-  static APICall(token, params) {
+  static APICall(token, postSpecs) {
     const api_url = this.url_prefix + 'requestRoute/';
+    const post_obj = postSpecs.getJSON();
+
+    if(post_obj === null) {
+      console.error('There are non null fields in the PostSpecs instance')
+    }
+
     return fetch(api_url, {
       method: 'METHOD',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': token,
       },
-      body: JSON.stringify(params)
+      body: JSON.stringify(post_obj)
     })
       .catch((error) => console.log(error))
-      // worth testing this out, in case the format of returned data is wrong
-      // .then((resp) => resp.json())
+    // worth testing this out, in case the format of returned data is wrong
+    // .then((resp) => resp.json())
   }
 
   static Verify(token) {
@@ -44,7 +50,7 @@ export default class APIService {
    * @returns a list of Date objects
    */
   static GetDatesProtected(token) {
-    const api_url = this.url_prefix + 'get_dates/';
+    const api_url = this.url_prefix + 'get_posts/';
     return fetch(api_url, {
       method: 'GET',
       headers: {
@@ -56,15 +62,27 @@ export default class APIService {
   }
 
 
-  static SubmitDate(datespecs, token) {
-    const api_url = this.url_prefix + 'upload_date/';
+  /**
+   * Post a new Post to the server
+   * @param {PostSpecs} postSpecs the PostSpecs class instance to be sent to the server
+   * @param {JWT} jwt the serialized web token used for auth
+   * @returns success codes idk
+   */
+  static SubmitDate(postSpecs, jwt) {
+    const post_obj = postSpecs.getJSON();
+    if(post_obj === null) {
+      console.error('postspecs had one or more null fields');
+      return;
+    }
+
+    const api_url = this.url_prefix + 'upload_post/';
     return fetch(api_url, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': token
+        'Authorization': jwt
       },
-      body: JSON.stringify(datespecs)
+      body: JSON.stringify(post_obj),
     })
   }
 
