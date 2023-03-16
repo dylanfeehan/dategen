@@ -1,20 +1,13 @@
 from flask import Flask, jsonify, request
-from configparser import ConfigParser
-from google.cloud.sql.connector import Connector, IPTypes
-from sqlalchemy import create_engine, exc
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-import sys
 from flask_cors import CORS
-import sqlalchemy
-import pg8000
-import os
+
 import firebase_admin
 from firebase_admin import credentials, auth
-import base64
 
 from configmodule import DevelopmentConfig
-# from configmodule import ProductionConfig
+from models import db, ma, User, Dates, datesSchema, dateSchema, userSchema, usersSchema
 
 app = Flask(__name__)
 
@@ -22,66 +15,14 @@ app.config.from_object(DevelopmentConfig())
 
 CORS(app)
 
-db = SQLAlchemy(app)
-ma = Marshmallow(app)
+ma.init_app(app)
+db.init_app(app)
 
 path = '/home/dylan/projects/dategen/backend/dategen-admin.json'
 cred = credentials.Certificate(path)
 
 firebase_app = firebase_admin.initialize_app(cred)
 
-
-class User(db.Model):
-    id = db.Column(db.String(), primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String())
-    posts = db.relationship("Dates", backref='poster')
-
-    def __init__(self, id, name, email):
-        self.id = id
-        self.name = name
-        self.email = email
-
-
-class UserSchema(ma.Schema):
-    class Meta:
-        fields = ('id', 'name', 'email', 'posts')
-
-
-userSchema = UserSchema()
-usersSchema = UserSchema(many=True)
-
-
-class Dates(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.String())
-    title = db.Column(db.Text(), unique=True)
-    site = db.Column(db.Text())
-    details = db.Column(db.Text())
-    reservations = db.Column(db.Text())
-    notes = db.Column(db.Text())
-    directions = db.Column(db.Text())
-    poster_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    # poster id
-
-    def __init__(self, poster_id, title, type, site, details, reservations, notes, directions):
-        self.title = title
-        self.type = type
-        self.site = site
-        self.details = details
-        self.reservations = reservations
-        self.notes = notes
-        self.directions = directions
-
-
-class DatesSchema(ma.Schema):
-    class Meta:
-        fields = ('id', 'title', 'type', 'site', 'details',
-                  'reservations', 'notes', 'directions')
-
-
-dateSchema = DatesSchema()
-datesSchema = DatesSchema(many=True)
 
 def create_user(token):
     user = User(token['user_id'], token['name'], token['email'])
@@ -93,9 +34,11 @@ def verify_request():
     token = request.headers.get('Authorization')
     print('token: ' + str(token))
     if (token != None):
-        token = auth.verify_id_token(token)
-        if token == None:
+        try: 
+            token = auth.verify_id_token(token)
+        except: 
             return '', 500
+
         user = User.query.get(token['user_id'])
         if(user == None):
             create_user(token)
@@ -139,31 +82,6 @@ def verify_token():
     return jsonify({'error': 'i printed it...'})
 
 
-@app.route('/debug/putdate/', methods=['GET'])
-def put_date():
-    date = Dates('test title', 'oneonone', 'no website',
-                 'no details sorry debuggin', 'no res', 'no notes big  boy', 'go over there')
-    db.session.add(date)
-    db.session.commit()
-    return 'placed date, find it in /debug/getdates/'
-
-# get all for debuggin
-
-
-@app.route('/debug/getdates/', methods=['GET'])
-def get_dates():
-    all_dates = Dates.query.all()
-    results = datesSchema.jsonify(all_dates)
-    return results
-
-
-@app.cli.command('initdb')
-def init():
-    with app.app_context():
-        print('creating database')
-        db.create_all()
-
-
 homepage = """
 <!DOCTYPE html>
 <html>
@@ -190,7 +108,7 @@ def index():
 def get_dates_by_type(dateType):
     if (dateType != 'oneonone' and dateType != 'activity' and dateType != 'fooddrink'):
         print('error. invalid date type. quitting....')
-        sys.exit()
+        return '', 400
     datesByType = Dates.query.filter(Dates.type == dateType).all()
     results = datesSchema.jsonify(datesByType)
     return results
@@ -239,3 +157,30 @@ def delete_date():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+# get all for debuggin
+
+@app.route('/debug/putdate/', methods=['GET'])
+def put_date():
+    date = Dates('test title', 'oneonone', 'no website',
+                 'no details sorry debuggin', 'no res', 'no notes big  boy', 'go over there')
+    db.session.add(date)
+    db.session.commit()
+    return 'placed date, find it in /debug/getdates/'
+
+
+
+@app.route('/debug/getdates/', methods=['GET'])
+def get_dates():
+    all_dates = Dates.query.all()
+    results = datesSchema.jsonify(all_dates)
+    return results
+
+
+@app.cli.command('initdb')
+def init():
+    with app.app_context():
+        print('creating database')
+        db.create_all()
