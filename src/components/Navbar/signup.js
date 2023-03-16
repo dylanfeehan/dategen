@@ -1,9 +1,3 @@
-import react from 'react';
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Popover from 'react-bootstrap/Popover';
-import { Link } from 'react-router-dom';
 import '../../App.css';
 
 import { useEffect } from 'react';
@@ -11,26 +5,19 @@ import { firebaseConfig } from '../../assets/firebaseConfig';
 import 'firebaseui/dist/firebaseui.css';
 
 import firebase from 'firebase/compat/app'
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-
+import { getAuth } from 'firebase/auth'
 
 const app = firebase.initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-
 const SignUp = () => {
-  var firebaseui = require('firebaseui');
+  let firebaseui = require('firebaseui');
   useEffect(() => {
-    //https://firebase.google.com/docs/auth/web/start
-    // good docs on how the auth initializaiton stuff works
     const uiConfig = {
-      //https://firebase.google.com/docs/auth/web/manage-users
-      // regarding below... 'get currently signed in user'... useful in the future... 
-      // this works with react router... just need to figure out how to keep the auth state... do we pass around??
       signInFlow: 'popup',
       signInSuccessUrl: '/homepage',
+      // GOOGLE and EMAIL/PASS
       signInOptions: [
-        //"password",
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         {
           provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -38,12 +25,19 @@ const SignUp = () => {
         }
       ],
     };
+
+    /**
+     * @important
+     * No more than one ui instance can be retrieved for a specific auth instance. 
+     * So we need to first use getInstance(), which gets an instance of our AuthUI object if one exists
+     * And if it doesn't exist, we create a new one with our auth object
+     */
     let ui = firebaseui.auth.AuthUI.getInstance();
     if (!ui) {
       ui = new firebaseui.auth.AuthUI(auth);
     }
 
-    console.log('ui: ' + ui)
+    // points to the id in the return / render function
     ui.start("#firebaseui-auth-container", uiConfig);
   }, []);
 
