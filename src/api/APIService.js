@@ -1,6 +1,28 @@
+
 export default class APIService {
 
   static url_prefix = process.env.REACT_APP_API_URL_PREFIX;
+
+  /**
+   * 
+   * @param {JWT} token for verification
+   * @param {Date} params to send to server
+   * @returns 
+   */
+  static APICall(token, params) {
+    const api_url = this.url_prefix + 'requestRoute/';
+    return fetch(api_url, {
+      method: 'METHOD',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token,
+      },
+      body: JSON.stringify(params)
+    })
+      .catch((error) => console.log(error))
+      // worth testing this out, in case the format of returned data is wrong
+      // .then((resp) => resp.json())
+  }
 
   static Verify(token) {
     const api_url = this.url_prefix + 'verify/'
@@ -12,11 +34,15 @@ export default class APIService {
       },
       body: JSON.stringify(""),
     })
-      .then((resp => resp.json()))
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error))
   }
 
 
+  /**
+   * Get a User's Private Feed (All their posts)
+   * @param {JWT} token for verification
+   * @returns a list of Date objects
+   */
   static GetDatesProtected(token) {
     const api_url = this.url_prefix + 'get_dates/';
     return fetch(api_url, {
@@ -25,7 +51,8 @@ export default class APIService {
         'Content-Type': "application/json",
         'Authorization': token
       },
-    }).then(resp=> resp.json())
+    }).then(resp => resp.json())
+      .catch((error) => console.log(error))
   }
 
 
@@ -73,13 +100,11 @@ export default class APIService {
         'Content-Type': 'application/JSON',
       },
     })
-      .then(resp => resp.json());
   }
 
   static UploadDate(dateSpecs) {
     const api_url = this.url_prefix + 'uploaddate/'
     return fetch(api_url, {
-      //const result = fetch('/api/uploaddate/', {
       'method': 'POST',
       headers: {
         'Content-Type': 'application/json'
