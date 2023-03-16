@@ -83,8 +83,8 @@ class DatesSchema(ma.Schema):
 dateSchema = DatesSchema()
 datesSchema = DatesSchema(many=True)
 
-def create_user(usertok):
-    user = User(usertok['user_id'], usertok['name'], usertok['email'])
+def create_user(token):
+    user = User(token['user_id'], token['name'], token['email'])
     db.session.add(user)
     db.session.commit()
 
@@ -93,16 +93,18 @@ def verify_request():
     token = request.headers.get('Authorization')
     print('token: ' + str(token))
     if (token != None):
-        usertok = auth.verify_id_token(token)
-        user = User.query.get(usertok['user_id'])
+        token = auth.verify_id_token(token)
+        if token == None:
+            return '', 500
+        user = User.query.get(token['user_id'])
         if(user == None):
-            create_user(usertok)
-        request.usertok = usertok
+            create_user(token)
+        request.token = token
 
 
 @app.route('/get_dates/', methods=['GET'])
 def get_dates_protected():
-    token = request.usertok
+    token = request.token
     user = User.query.get(token['user_id'])
     dates = user.posts
     print(dates)
@@ -111,7 +113,7 @@ def get_dates_protected():
 
 @app.route('/upload_date/', methods=['PUT'])
 def upload_date_protected():
-    token = request.usertok
+    token = request.token
     date_obj = request.get_json() 
     date = Dates(token['user_id'], date_obj['title'], date_obj['type'],
                  date_obj['site'], date_obj['details'],
@@ -127,7 +129,7 @@ def upload_date_protected():
 def verify_token():
     # user_id = request.user_id
     # print(user_id)
-    token = request.usertok
+    token = request.token
     print(token)
     print('user: ' + token['name'])
 
