@@ -23,10 +23,10 @@ const GenericDateCard = (props) => {
 
     const api_url = url_prefix +`getdates/${dateType}/`;
     fetch(api_url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': "application/json"
-      },
+        method: 'GET',
+        headers: {
+          'Content-Type': "application/json"
+        },
     }).then(resp => resp.json())
     .then(data => setDates(data));
   }, []);
