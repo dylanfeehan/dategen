@@ -21,7 +21,10 @@ const GenericDateCard = (props) => {
   useEffect(async () => {
     let dateType = props.dateType;
 
-    let dates = APIService.GetDates(dateType);
+
+    //let dates = APIService.GetDates(dateType);
+    let dates = await APIService.GetDates(dateType);
+
     setDates(dates);
 
   }, []);

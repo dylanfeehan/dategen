@@ -20,6 +20,6 @@ const Edit = () => {
                 });
             }} action={"Edit"}></DateForm>
         </div>
-    )
+    );
 }
 export default Edit;

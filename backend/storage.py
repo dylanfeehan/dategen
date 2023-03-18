@@ -58,13 +58,14 @@ Action
 def verify_token():
     jwt = request.headers.get('Authorization')
     token = None
-    print('token: ' + str(jwt))
+    print('pptoken: ' + str(jwt))
     if (jwt != None):
         print('well fuck')
         try:
             token = auth.verify_id_token(jwt)
         except:
-            return '', 500
+            print('fauled to verify token')
+            return 'auth failed', 500
 
         user = User.query.get(token['user_id'])
         if (user == None):

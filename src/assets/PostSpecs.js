@@ -13,6 +13,17 @@ export default class PostSpecs {
         this.notes = notes;
         this.site = site;
         this.location = location;
+        this.id = "";
+    }
+
+    static fromObject(post_obj) {
+        return new PostSpecs(post_obj.title, 
+            post_obj.type, 
+            post_obj.details, 
+            post_obj.preparation, 
+            post_obj.notes, 
+            post_obj.site, 
+            post_obj.location);
     }
 
     /**

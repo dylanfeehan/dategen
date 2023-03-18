@@ -1,3 +1,4 @@
+import PostSpecs from '../assets/PostSpecs';
 export default class APIService {
   static url_prefix = process.env.REACT_APP_API_URL_PREFIX;
 
@@ -14,24 +15,27 @@ export default class APIService {
       method: method,
       headers: {
         'Content-Type': "application/json",
-        'Authorization': token,
+        'Authorization': jwt,
       },
-      body: JSON.stringify(body),
+      body: (body === "" ? null : JSON.stringify(body)),
     };
   }
 
   /**
    * Get a User's Private Feed (All their posts)
-   * @param {JWT} token for verification
+   * @param {JWT} jwt for verification
    * @returns a list of Date objects
    * TODO: consider adding a server side "time uploaded"
    */
-  static async GetUserPosts(token) {
+  static async GetUserPosts(jwt) {
     const api_url = this.url_prefix + 'get_posts/';
     const options = this.fetchOptions('GET', jwt);
 
     const result = await fetch(api_url, options);
-    return await result.json();
+    const post_obj_arr = await result.json();
+
+    const postSpecs = post_obj_arr.map((post_obj) => PostSpecs.fromObject(post_obj));
+    return postSpecs;
   }
 
   /**
