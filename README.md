@@ -52,13 +52,3 @@ auth.onAuthStateChanged((user) => {
     }
 });
 ```
-
-### Data Models
-- Current Post attributes:
-    - title
-    - type = oneonone | fooddrink | activity
-    - details
-    - site
-    - reservations  (rename to preparation)
-    - notes
-    - directions
