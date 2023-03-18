@@ -32,7 +32,6 @@ export default class APIService {
 
     const result = await fetch(api_url, options);
     return await result.json();
-    return result;
   }
 
   /**
