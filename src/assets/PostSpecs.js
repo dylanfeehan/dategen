@@ -21,6 +21,7 @@ export default class PostSpecs {
      */
     getJSON() {
         if(!this.enforcePostFields()) {
+            console.error("ERROR: a field is null in getJSON");
             return null;
         }
         return Object.fromEntries(Object.entries(this));

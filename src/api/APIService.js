@@ -1,134 +1,89 @@
-
 export default class APIService {
-
   static url_prefix = process.env.REACT_APP_API_URL_PREFIX;
 
-  /**
-   * 
-   * @param {JWT} token for verification
-   * @param {PostSpecs} postSpecs instance to send to server
-   * @returns result from the api as a JSON object, or a list of them
+  /** 
+   * Generates a fetch object to be passed as the second parameter of the fetch function.
+   * To reduce amount of code in this API service
+   * @param {String} method the HTTP method being called
+   * @param {JWT} jwt The user token
+   * @param {String Optional} body the body of the request
+   * @returns a fetch built from params
    */
-  static APICall(token, postSpecs) {
-    const api_url = this.url_prefix + 'requestRoute/';
-    const post_obj = postSpecs.getJSON();
-
-    if(post_obj === null) {
-      console.error('There are non null fields in the PostSpecs instance')
-    }
-
-    return fetch(api_url, {
-      method: 'METHOD',
+  static fetchOptions(method, jwt, body = "") {
+    return {
+      method: method,
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': "application/json",
         'Authorization': token,
       },
-      body: JSON.stringify(post_obj)
-    })
-      .catch((error) => console.log(error))
-    // worth testing this out, in case the format of returned data is wrong
-    // .then((resp) => resp.json())
+      body: JSON.stringify(body),
+    };
   }
-
-  static Verify(token) {
-    const api_url = this.url_prefix + 'verify/'
-    return fetch(api_url, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token
-      },
-      body: JSON.stringify(""),
-    })
-      .catch((error) => console.log(error))
-  }
-
 
   /**
    * Get a User's Private Feed (All their posts)
    * @param {JWT} token for verification
    * @returns a list of Date objects
+   * TODO: consider adding a server side "time uploaded"
    */
-  static GetDatesProtected(token) {
+  static async GetUserPosts(token) {
     const api_url = this.url_prefix + 'get_posts/';
-    return fetch(api_url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': "application/json",
-        'Authorization': token
-      },
-    }).then(resp => resp.json())
-      .catch((error) => console.log(error))
-  }
+    const options = this.fetchOptions('GET', jwt);
 
+    const result = await fetch(api_url, options);
+    return await result.json();
+    return result;
+  }
 
   /**
-   * Post a new Post to the server
-   * @param {PostSpecs} postSpecs the PostSpecs class instance to be sent to the server
-   * @param {JWT} jwt the serialized web token used for auth
-   * @returns success codes idk
+   * Upload a new post for the user associated with the token
+   * @param {PostSpecs} postSpecs
+   * @param {JWT} jwt the encoded web token used for auth
+   * @returs successful ? ok : null
    */
-  static SubmitDate(postSpecs, jwt) {
-    const post_obj = postSpecs.getJSON();
-    if(post_obj === null) {
-      console.error('postspecs had one or more null fields');
-      return;
-    }
+  static async UploadPost(postSpecs, jwt) {
+    const post_obj = postSpecs.getJSON()
+    const api_url = this.url_prefix + "upload_post/";
+    const options = this.fetchOptions('PUT', jwt, postSpecs);
 
-    const api_url = this.url_prefix + 'upload_post/';
-    return fetch(api_url, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': jwt
-      },
-      body: JSON.stringify(post_obj),
-    })
+    const result = await fetch(api_url, options);
+    const response = await result.json();
+    console.log("response: " + response)
+    return response;
   }
 
-  static UpdateDate(dateSpecs) {
-    const api_url = this.url_prefix + 'updatedate/'
-    return fetch(api_url, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': "application/json",
-      },
-      body: JSON.stringify(dateSpecs),
-    })
-      .then(resp => resp.json())
+  /**
+   * Updates an existing date with new information
+   * @param {PostSpecs} postSpecs
+   * @param {JWT} jwt
+   * TODO: 
+   *      - eventually i'll need to update this to index the database by post ID, 
+   *        since we won't want to enforce unique titles later on
+   *      - or maybe figure out how to use existing post ID and merge it with the new data...
+   */
+  static async UpdatePost(postSpecs, jwt) {
+    post_obj = postSpecs.getJSON();
+    const api_url = this.url_prefix + "update_post/"
+    const options = this.fetchOptions('PUT', jwt, postSpecs);
+
+    const result = await fetch(api_url, options);
+    const response = await result.json();
+    console.log("response: " + response)
+    return response;
   }
 
-  static DeleteDate(id) {
-    const api_url = this.url_prefix + 'deletedate/'
-    return fetch(api_url, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': "application/json"
-      },
-      body: JSON.stringify(id)
-    })
-      .then(resp => resp.json());
+  /**
+   * Delete a user's date by id
+   * @param {?} id 
+   * @param {JWT} jwt
+   */
+  static async DeletePost(id, jwt) {
+    const api_url = this.url_prefix + 'delete_post/'
+    const options = this.fetchOptions('DELETE', jwt, id);
 
-  }
-  static GetDates(dateType) {
-    const api_url = this.url_prefix + `getdates/${dateType}/`;
-    return fetch(api_url, {
-      method: ['GET'],
-      headers: {
-        'Content-Type': 'application/JSON',
-      },
-    })
-  }
-
-  static UploadDate(dateSpecs) {
-    const api_url = this.url_prefix + 'uploaddate/'
-    return fetch(api_url, {
-      'method': 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(dateSpecs)
-    })
-      .then(resp => resp.json())
+    const result = await fetch(api_url, options);
+    const response = await result.json();
+    console.log("response: " + response)
+    return response;
   }
 }

@@ -154,6 +154,7 @@ def update_post():
         # id can't be changed, and request is used as state (probably change this??? in)
         if (not (key == 'id')):
             setattr(post, key, jsonObject[key])
+    # don't need to add to session :)
     db.session.commit()
     return '', 204
 

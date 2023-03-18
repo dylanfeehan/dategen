@@ -18,17 +18,12 @@ const GenericDateCard = (props) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect(async () => {
     let dateType = props.dateType;
 
-    const api_url = url_prefix +`getdates/${dateType}/`;
-    fetch(api_url, {
-        method: 'GET',
-        headers: {
-          'Content-Type': "application/json"
-        },
-    }).then(resp => resp.json())
-    .then(data => setDates(data));
+    let dates = APIService.GetDates(dateType);
+    setDates(dates);
+
   }, []);
 
   const arr = dates.filter((date) => date != null);

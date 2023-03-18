@@ -17,12 +17,12 @@ const Homepage = () => {
 
     function submitPost(user) {
 
-        const postSpecs = new PostSpecs('nice abstraction', 
-            'oneonone', 
-            'haha this is cool', 
-            'probably doesnt work yet', 
-            'notes on this boy', 
-            'website yo', 
+        const postSpecs = new PostSpecs('nice abstraction',
+            'oneonone',
+            'haha this is cool',
+            'probably doesnt work yet',
+            'notes on this boy',
+            'website yo',
             'my house');
         user.getIdToken(false)
             .then((token) => {
@@ -31,13 +31,11 @@ const Homepage = () => {
             .catch((error) => console.log(error))
 
     }
-    function getPosts(user) {
+    async function getPosts(user) {
         user.getIdToken(false)
-            .then((token) => {
-                const promise = APIService.GetDatesProtected(token);
-                promise.then((data) => console.log(data))
-            })
-        console.log('getting posts')
+        const token = await user.getIdToken(false);
+        const data = await APIService.GetDatesProtected(token)
+        console.log(data);
     }
 
     // general flow for getting a user (setting component state)
@@ -64,7 +62,7 @@ const Homepage = () => {
                         getPosts(user);
                     }}>Get Dates</Button>
                 </div>
-            ): (<h1>fetching your creds...</h1>)
+            ) : (<h1>fetching your creds...</h1>)
             }
         </div>
     )
