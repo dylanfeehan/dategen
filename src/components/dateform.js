@@ -3,29 +3,39 @@ import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { Form } from 'react-bootstrap'
+import PostSpecs from '../assets/PostSpecs';
 
 const DateForm = (props) => {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState(
-        props.data != null ? props.data : {
+        props.postSpecs != null ? props.postSpecs : PostSpecs.fromObject({
             title: "",
             type: "",
-            id: null,
             details: "",
             site: "",
-            reservations: "",
+            preparation: "",
             notes: "",
-            directions: "",
-        });
+            location: "",
+            id: null,
+        }));
 
     const handleChange = (event) => {
         const { name, value } = event.target;
+        // this is probably causing problems!
+        console.log("Form data before edit: " + formData);
         setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+        console.log("Form data after edit: " + formData);
+        console.log("after edit with JSON: " + formData.title);
+        console.log("TYPE: " + typeof formData);
     };
 
-    const handleSubmit = () => {
-        props.handleSubmit(formData)
+    // handleSbubmit
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log("Submitting this: ");
+        console.log(formData);
+        props.handleSubmit(PostSpecs.fromObject(formData));
     }
 
     return (

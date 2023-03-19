@@ -23,6 +23,9 @@ const Feed = (props) => {
             console.log("Getting posts for this token: " + props.jwt);
             let posts = await APIService.GetUserPosts(props.jwt);
             setPosts(posts);
+            console.log("got posts: " + posts);
+            console.log(posts[0]);
+            console.log(posts[0].getJSON());
         };
         getPosts();
     }, []);
@@ -60,7 +63,9 @@ const Feed = (props) => {
                                     >
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu variant='dark' style={{}}>
-                                        <Dropdown.Item as={Link} to="/edit" state={{ request: "Edit", data: postSpecs }}>Edit</Dropdown.Item>
+                                        {console.log("sending to edit")}
+                                        {console.log(postSpecs)}
+                                        <Dropdown.Item as={Link} to="/edit" state={{ request: "Edit", postSpecs: postSpecs, jwt: props.jwt}}>Edit</Dropdown.Item>
                                         <Dropdown.Item onClick={handleDeleteClick}>Delete</Dropdown.Item>
                                         <Modal show={showConfirmation} onHide={handleClose}>
                                             <Modal.Header closeButton>

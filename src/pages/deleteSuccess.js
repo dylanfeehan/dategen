@@ -9,7 +9,7 @@ const DeleteSuccess = () => {
         <div className='centered'>
             <h1 style={{ paddingTop: '2rem' }}>Delete Successful!</h1>
             <div style={{ display: 'grid' }}>
-                <Link to="/" style={{ paddingTop: '1rem' }}>
+                <Link to="/homepage" style={{ paddingTop: '1rem' }}>
                     <Button variant="dark" >Return Home</Button>
                 </Link>
             </div>

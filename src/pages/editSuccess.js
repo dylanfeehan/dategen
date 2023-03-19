@@ -11,7 +11,7 @@ const EditSuccess = () => {
         <div className='centered'>
             <h1 style={{ paddingTop: '2rem' }}>Edit Successful!</h1>
             <div style={{ display: 'grid' }}>
-                <Link to="/" style={{ paddingTop: '1rem' }}>
+                <Link to="/homepage" style={{ paddingTop: '1rem' }}>
                     <Button variant="dark" >Return Home</Button>
                 </Link>
                 <Link to="/dates/dateSpecs" state={{ data: editedData }} style={{ paddingTop: '1rem' }}>
@@ -19,8 +19,7 @@ const EditSuccess = () => {
                 </Link>
             </div>
         </div>
-
-    )
+    );
 }
 
 export default EditSuccess;

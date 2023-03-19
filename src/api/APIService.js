@@ -65,6 +65,8 @@ export default class APIService {
    *      - or maybe figure out how to use existing post ID and merge it with the new data...
    */
   static async UpdatePost(postSpecs, jwt) {
+    console.log('send me');
+    console.log(postSpecs);
     post_obj = postSpecs.getJSON();
     const api_url = this.url_prefix + "update_post/"
     const options = this.fetchOptions('PUT', jwt, postSpecs);

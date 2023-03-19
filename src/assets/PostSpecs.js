@@ -5,7 +5,7 @@
  */
 export default class PostSpecs {
 
-    constructor(title, type, details, preparation, notes, site, location) {
+    constructor(title, type, details, preparation, notes, site, location, id) {
         this.title = title;
         this.type = type;
         this.details = details;
@@ -13,7 +13,10 @@ export default class PostSpecs {
         this.notes = notes;
         this.site = site;
         this.location = location;
-        this.id = "";
+        //this.id = "";
+        if(id !== null) {
+            this.id = id;
+        }
     }
 
     static fromObject(post_obj) {
@@ -23,7 +26,8 @@ export default class PostSpecs {
             post_obj.preparation, 
             post_obj.notes, 
             post_obj.site, 
-            post_obj.location);
+            post_obj.location,
+            post_obj.id);
     }
 
     /**
@@ -33,7 +37,7 @@ export default class PostSpecs {
     getJSON() {
         if(!this.enforcePostFields()) {
             console.error("ERROR: a field is null in getJSON");
-            return null;
+            //return null;
         }
         return Object.fromEntries(Object.entries(this));
     }
