@@ -40,6 +40,7 @@ const Feed = (props) => {
     const handleClose = () => setShowConfirmation(false);
 
     async function handleDelete(postSpecs) {
+        handleClose();
         console.log('deleting this: ' + postSpecs);
         const response = await APIService.DeletePost(postSpecs.id, props.jwt);
         setShowConfirmation(false);

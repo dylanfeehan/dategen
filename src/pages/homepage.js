@@ -30,10 +30,9 @@ const Homepage = () => {
             'my house');
         user.getIdToken(false)
             .then((token) => {
-                APIService.SubmitDate(postSpecs, token)
+                APIService.UploadPost(postSpecs, token)
             })
             .catch((error) => console.log(error));
-
     }
     async function getPosts(user) {
         user.getIdToken(false)

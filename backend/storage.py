@@ -37,6 +37,8 @@ Action
 creates a user, since one does not exist for the provided JWT
 
 """
+
+
 def create_user(token):
     user = User(token['user_id'], token['name'], token['email'])
     db.session.add(user)
@@ -54,6 +56,8 @@ Action
 - calls create_user if none exists for token
 - sets request.token to the deserialized token
 """
+
+
 @app.before_request
 def verify_token():
     jwt = request.headers.get('Authorization')
@@ -69,6 +73,7 @@ def verify_token():
 
         user = User.query.get(token['user_id'])
         if (user == None):
+            print("creating user")
             create_user(token)
         request.token = token
 
@@ -87,8 +92,8 @@ def upload_post_protected():
     token = request.token
     post_info = request.get_json()
     post = Post(token['user_id'], post_info['title'], post_info['type'],
-                 post_info['site'], post_info['details'],
-                 post_info['preparation'], post_info['notes'], post_info['location'])
+                post_info['site'], post_info['details'],
+                post_info['preparation'], post_info['notes'], post_info['location'])
 
     user = User.query.get(token['user_id'])
     user.posts.append(post)
@@ -97,80 +102,42 @@ def upload_post_protected():
     return '', 200
 
 
-@app.route('/verify/', methods=['PUT', 'GET'])
-def verify_token():
-    # user_id = request.user_id
-    # print(user_id)
+@app.route('/update_post/', methods=['PUT'])
+def update_post_protected():
     token = request.token
-    print(token)
-    print('user: ' + token['name'])
-
     user = User.query.get(token['user_id'])
-    print(user.name)
+    post_obj = request.get_json()
+    print(post_obj)
+    post = Post.query.get(post_obj['id'])
+    if (post.poster != user):
+        print("unauthorized access attempt")
+        return '', 401
+    for key in post_obj:
+        if (not key == 'id'):
+            setattr(post, key, post_obj[key])
+    db.session.commit()
+    return '', 200
 
-    return jsonify({'error': 'i printed it...'})
+
+@app.route('/delete_post/', methods=['DELETE'])
+def delete_date_protected():
+    token = request.token
+    request_body = int(request.get_json())
+    print(request_body)
+    post = Post.query.get(request_body)
+    db.session.delete(post)
+    db.session.commit()
+    return 'success', 200
 
 
 """
 A route for testing that the API is running
 """
+
+
 @app.route('/', methods=['GET'])
 def index():
     return 'Homepage'
-
-# get post by type
-
-
-@app.route('/getposts/<postType>/', methods=['GET'])
-def get_posts_by_type(postType):
-    if (postType != 'oneonone' and postType != 'activity' and postType != 'fooddrink'):
-        print('error. invalid post type. quitting....')
-        return '', 400
-    postsByType = Post.query.filter(Post.type == postType).all()
-    results = postsSchema.jsonify(postsByType)
-    return results
-
-
-@app.route("/uploadpost/", methods=['POST'])
-def upload_post():
-    jsonObject = request.get_json()
-
-    post = Post('noid', jsonObject['title'], jsonObject['type'],
-                 jsonObject['site'], jsonObject['details'],
-                 jsonObject['preparation'], jsonObject['notes'], jsonObject['location'])
-
-    db.session.add(post)
-    db.session.commit()
-    return "post added"
-
-
-@app.route('/updatepost/', methods=['PUT'])
-def update_post():
-    print('received update post requets')
-    jsonObject = request.get_json()
-    print(jsonObject)
-    post = Post.query.get(jsonObject['id'])
-    for key in jsonObject:
-        # TODO: make request not part of state in object, rather part of state in functional components
-        # id can't be changed, and request is used as state (probably change this??? in)
-        if (not (key == 'id')):
-            setattr(post, key, jsonObject[key])
-    # don't need to add to session :)
-    db.session.commit()
-    return '', 204
-
-
-@app.route('/deletepost/', methods=['DELETE'])  # what method?
-def delete_post():
-    jsonObject = request.get_json()
-    id = int(jsonObject)
-    postToDelete = Post.query.get(id)
-    if (postToDelete == None):
-        return "Post not found", 404
-
-    db.session.delete(postToDelete)
-    db.session.commit()
-    return "", 204
 
 
 if __name__ == '__main__':
@@ -182,7 +149,7 @@ if __name__ == '__main__':
 @app.route('/debug/putpost/', methods=['GET'])
 def put_post():
     post = Post('test title', 'oneonone', 'no website',
-                 'no details sorry debuggin', 'no res', 'no notes big  boy', 'go over there')
+                'no details sorry debuggin', 'no res', 'no notes big  boy', 'go over there')
     db.session.add(post)
     db.session.commit()
     return 'placed post, find it in /debug/getposts/'
