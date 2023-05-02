@@ -1,16 +1,16 @@
 import React from 'react';
-import me from '../../assets/images/contact.png'
+import me from '../../images/contact.png'
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { MDBIcon } from 'mdb-react-ui-kit';
 import '../../App.css'
 
-
 const Contact = () => {
   return (
 
     <div>
-      <img src={me} alt="me" height="250" style={{margin: 'auto', marginTop: '1rem', display: 'block', borderRadius: '50%'}}/>
+      {/*<img src={me} alt="me" height="250" style={{margin: 'auto', marginTop: '1rem', display: 'block', borderRadius: '50%'}}/>*/}
+      <img src={me} alt="me" height="250" style={{marginTop: '1rem', display: 'block', borderRadius: '25%', margin: 'auto'}}/>
       <div className="contact-container">
         <i className="fas fa-envelope-square my-icon"></i>
         <h3>Email: dylanjfeehan@gmail.com</h3>

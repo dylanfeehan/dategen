@@ -23,7 +23,6 @@ const MyNavbar = () => {
             <NavDropdown title="Other" id="basic-nav-dropdown" align={{lg: 'start'}}>
               <NavDropdown.Item as={Link} to="/sign-up">Sign Up</NavDropdown.Item>
               <NavDropdown.Item href="https://github.com/dylanfeehan/dategen" target="_blank"><code>Source</code></NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/admin">Admin</NavDropdown.Item>
             </NavDropdown>
               </div>
           </Nav>

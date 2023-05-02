@@ -7,7 +7,6 @@ import Home from './pages';
 import About from './components/Navbar/about'
 import Upload from './components/Navbar/upload'
 import Edit from './pages/edit'
-import Admin from './components/Navbar/admin';
 import UploadSuccess from './pages/uploadSuccess';
 import EditSuccess from './pages/editSuccess';
 import DeleteSuccess from './pages/deleteSuccess';
@@ -34,7 +33,6 @@ function App() {
       <Route path='/contact' element={<Contact/>} /> 
       <Route path='/upload' element={<Upload />} />
       <Route path='/edit' element={<Edit />} />
-      <Route path='/admin' element={<Admin />} />
       <Route path='/sign-up' element={<SignUp/>} />
       <Route path='/uploadSuccess' element ={<UploadSuccess />} />
       <Route path='/editSuccess' element={<EditSuccess />} />

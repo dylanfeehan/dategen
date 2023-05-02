@@ -20,13 +20,6 @@ const Edit = () => {
         console.log("error reading from location");
     }
 
-    //const postSpecs = location.state.postSpecs;
-    //const jwt = location.state.jwt;
-
-    console.log("editing this: ")
-    console.log(postSpecs);
-    console.log("token: " + jwt);
-
     return (
         <div>
             <DateForm postSpecs={postSpecs} handleSubmit={(editedPostSpecs) => {

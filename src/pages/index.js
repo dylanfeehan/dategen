@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import sitename from '../assets/images/trans_sitename-overlay.png'
+import sitename from '../images/trans_sitename-overlay.png'
 
 const Home = () => {
   return (

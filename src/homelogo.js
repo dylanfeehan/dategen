@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './dateGen.svg';
 import { Link } from 'react-router-dom';
-import lightlogo from './assets/images/lightdategenlogo.png'
+import lightlogo from './images/lightdategenlogo.png'
 
 const HomeLogo = () => {
 	return (

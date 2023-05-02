@@ -2,17 +2,16 @@ import React from 'react';
 import APIService from '../api/APIService';
 import { getAuth } from 'firebase/auth';
 import { Button } from 'react-bootstrap'
-import firebase from 'firebase/compat/app';
-import { firebaseConfig } from '../assets/firebaseConfig';
 import { useState } from 'react'
 import PostSpecs from '../assets/PostSpecs';
 import Feed from './dates/feed'; 
+import firebase_app from '../assets/firebase_app';
+
 import { useEffect } from 'react';
 
 const Homepage = () => {
     // reinitialize the firebase app for this page
-    const app = firebase.initializeApp(firebaseConfig);
-    const auth = getAuth(app)
+    const auth = getAuth(firebase_app);
 
     // needed for getting the authenticated user since getUser is async
     const [user, setUser] = useState(null);
@@ -35,9 +34,9 @@ const Homepage = () => {
             .catch((error) => console.log(error));
     }
     async function getPosts(user) {
-        user.getIdToken(false)
+        user.getIdToken(false);
         const token = await user.getIdToken(false);
-        const data = await APIService.GetDatesProtected(token)
+        const data = await APIService.GetDatesProtected(token);
         setPosts(data);
         console.log(data);
     }
@@ -51,10 +50,9 @@ const Homepage = () => {
             user.getIdToken(false).then((jwt)=>setToken(jwt));
         }
         else {
-            console.log('lookikng for user');
+            console.log('awaiting auth');
         }
     })
-    console.log('state unknown');
     return (
         <div>
             {user ? (
@@ -73,7 +71,6 @@ const Homepage = () => {
             ) : (<h1>fetching your creds...</h1>)
             }
         </div>
-        
-    )
+    );
 }
 export default Homepage;

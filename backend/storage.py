@@ -64,7 +64,6 @@ def verify_token():
     token = None
     print('pptoken: ' + str(jwt))
     if (jwt != None):
-        print('well fuck')
         try:
             token = auth.verify_id_token(jwt)
         except:
