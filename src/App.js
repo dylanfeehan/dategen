@@ -11,6 +11,7 @@ import UploadSuccess from './pages/uploadSuccess';
 import EditSuccess from './pages/editSuccess';
 import DeleteSuccess from './pages/deleteSuccess';
 import SignUp from './components/Navbar/signup'
+import SignIn from './pages/signin';
 import Contact from './components/Navbar/contact'
 import GenericDateCard from './pages/dates/genericdatecard';
 import DateSpecs from './pages/dates/datespecs';
@@ -28,7 +29,7 @@ function App() {
     <Router> 
     <MyNavbar className="my-navbar"/>
     <Routes>
-      <Route exact path='/' element={<Home />} />
+      <Route exact path='/' element={<SignIn />} />
       <Route path='/about' element={<About/>} />
       <Route path='/contact' element={<Contact/>} /> 
       <Route path='/upload' element={<Upload />} />

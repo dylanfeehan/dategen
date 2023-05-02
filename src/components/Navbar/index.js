@@ -17,7 +17,7 @@ const MyNavbar = () => {
             </Navbar.Brand>
             <Nav.Link as={Link} to="/about" className="">About</Nav.Link>
             <Nav.Link as={Link} to="/contact" className="nav-link">Contact</Nav.Link>
-            <Nav.Link as={Link} to="/upload" className="nav-link">Upload</Nav.Link>
+            {/*<Nav.Link as={Link} to="/upload" className="nav-link">Upload</Nav.Link>*/}
 
               <div className="narrow-boy">
             <NavDropdown title="Other" id="basic-nav-dropdown" align={{lg: 'start'}}>

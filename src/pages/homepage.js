@@ -6,6 +6,7 @@ import { useState } from 'react'
 import PostSpecs from '../assets/PostSpecs';
 import Feed from './dates/feed'; 
 import firebase_app from '../assets/firebase_app';
+import { Link } from 'react-router-dom';
 
 import { useEffect } from 'react';
 
@@ -58,12 +59,9 @@ const Homepage = () => {
             {user ? (
                 <div>
                     <h1>welcome {user.displayName}</h1>
-                    <Button onClick={() => {
-                        submitPost(user);
-                    }}>Submit post</Button>
-                    <Button onClick={() => {
-                        getPosts(user);
-                    }}>Get Dates</Button>
+                    <Link to="/upload">
+                        <Button variant="dark">Upload Post</Button>
+                    </Link>
                     <h1>Feed</h1>
                     {console.log('before submitting the homie ' + jwt)}
                     <Feed jwt={jwt} />

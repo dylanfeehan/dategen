@@ -24,7 +24,7 @@ function Upload() {
 
       user.getIdToken(false).then((jwt) => setToken(jwt));
     }
-  })
+  });
 
   return (
     <div>
