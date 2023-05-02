@@ -14,11 +14,11 @@ const url_prefix = process.env.REACT_APP_API_URL_PREFIX;
 
 const Feed = (props) => {
     console.log("User's current token: " + props.jwt);
-    const [posts, setPosts] = useState([]);
+    //const [posts, setPosts] = useState([]);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const navigate = useNavigate();
 
-    useEffect(() => {
+    /*useEffect(() => {
         async function getPosts() {
             console.log("Getting posts for this token: " + props.jwt);
             let posts = await APIService.GetUserPosts(props.jwt);
@@ -28,9 +28,14 @@ const Feed = (props) => {
             console.log(posts[0].getJSON());
         };
         getPosts();
-    }, []);
+    }, []);*/
 
-    const arr = posts.filter((post) => post !== null)
+    const arr = props.posts.filter((post) => post !== null);
+    console.log();
+    console.log("HERE:");
+    for (const post of props.posts) {
+        console.log(post);
+    }
 
     // test to see if this is necessary
     const handleDeleteClick = useCallback(() => {

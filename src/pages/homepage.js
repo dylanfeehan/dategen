@@ -4,7 +4,7 @@ import { getAuth } from 'firebase/auth';
 import { Button } from 'react-bootstrap'
 import { useState } from 'react'
 import PostSpecs from '../assets/PostSpecs';
-import Feed from './dates/feed'; 
+import Feed from './dates/feed';
 import firebase_app from '../assets/firebase_app';
 import { Link } from 'react-router-dom';
 
@@ -19,41 +19,50 @@ const Homepage = () => {
     const [posts, setPosts] = useState([]);
     const [jwt, setToken] = useState(null);
 
-    function submitPost(user) {
+    useEffect(() => {
+        async function getPosts() {
+            if (jwt) {
+                APIService.GetUserPosts(jwt).then((posts) => {
+                    setPosts(posts);
+                });
+            }
+        }
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                console.log("Found user");
+                setUser(user);
+                user.getIdToken(false).then((jwt) => {
+                    setToken(jwt)
+                    APIService.GetUserPosts(jwt).then((posts) => {
+                        setPosts(posts);
+                    })
+                });
+            }
+            else {
+                console.log("waiting on user");
+            }
+        })
+    }, []);
+    /*auth.onAuthStateChanged((user) => {
+    if (user) {
+        console.log('found user')
+        console.log('display name: ' + user.displayName)
+        setUser(user);
+        user.getIdToken(false).then((jwt) => setToken(jwt));
+        APIService.GetUserPosts(jwt).then((posts) => {
+            setPosts(posts);
+            console.log(posts);
+        });
+    }
+    else {
+        console.log('awaiting auth');
+    }
+});
+    */
 
-        const postSpecs = new PostSpecs('nice abstraction',
-            'oneonone',
-            'haha this is cool',
-            'probably doesnt work yet',
-            'notes on this boy',
-            'website yo',
-            'my house');
-        user.getIdToken(false)
-            .then((token) => {
-                APIService.UploadPost(postSpecs, token)
-            })
-            .catch((error) => console.log(error));
-    }
-    async function getPosts(user) {
-        user.getIdToken(false);
-        const token = await user.getIdToken(false);
-        const data = await APIService.GetDatesProtected(token);
-        setPosts(data);
-        console.log(data);
-    }
-    
+
     // general flow for getting a user (setting component state)
-    auth.onAuthStateChanged((user) => {
-        if (user) {
-            console.log('found user')
-            console.log('display name: ' + user.displayName)
-            setUser(user);
-            user.getIdToken(false).then((jwt)=>setToken(jwt));
-        }
-        else {
-            console.log('awaiting auth');
-        }
-    })
+
     return (
         <div>
             {user ? (
@@ -64,7 +73,7 @@ const Homepage = () => {
                     </Link>
                     <h1>Feed</h1>
                     {console.log('before submitting the homie ' + jwt)}
-                    <Feed jwt={jwt} />
+                    <Feed jwt={jwt} posts={posts} />
                 </div>
             ) : (<h1>fetching your creds...</h1>)
             }
