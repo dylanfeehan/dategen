@@ -1,6 +1,6 @@
 # Welcome to Dategen!
 ## This work-in-progress is my attempt to create a couples/dating focused social media :) 
-*Front-end isn't my specialty and I dont' have an eye for design, so this app doesn't look nice. Appearance is a low priority for me, but the last phase of this project will be making it pretty*
+
 
 <br>
 
